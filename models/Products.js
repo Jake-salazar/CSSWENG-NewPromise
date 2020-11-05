@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('./connection');
 
 const productsSchema = mongoose.Schema({
     productID: { type: mongoose.Schema.Types.ObjectId, required: true},
