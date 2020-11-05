@@ -28,8 +28,10 @@ router.get('/Reviews',(req,res)=>{
 });
 
 
-router.post('/',(req,res)=>{
-    // create the res.render here
-    console.log(req.body);
-});
+router.post('/addProducts', productsController.create);
+
+// router.post('/',(req,res)=>{
+//     // create the res.render here
+//     console.log(req.body);
+// });
 module.exports = router;
