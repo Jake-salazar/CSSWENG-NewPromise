@@ -2,6 +2,7 @@
 const express = require("express")
 const exphbs = require('express-handlebars')
 const bodyParser = require("body-parser")
+const appRoute = require('./routes/route');
 
 //TODO: DB connection here
 
@@ -22,26 +23,8 @@ app.use(bodyParser.json());
 //? Partials and Static files
 app.use(express.static(__dirname + '/public'))
 
+app.use("/", appRoute);
 
-//? Routing require Section
-// const appRouter = require("./routes/indexRouter")
-
-
-//? Routing main section
-//TODO: Transfer this to routing later
-app.get(['/', '/home'], (req, res)=>{
-    res.render('home', {
-        pageTitle: "New Promise Hardware"
-    })
-})
-// app.use("/", appRouter)
-
-//Page not found section
-/*
-app.use((err, req, res, next)=>{
-    res.render("error")
-})
-*/
 
 //? Helper functions for HBS section
 
