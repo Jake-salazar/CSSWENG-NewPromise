@@ -1,7 +1,6 @@
 const productsModel = require('../models/Products');
 
 // Function that creates a Product
-
 exports.create = function(req, res) {
   var product = {
     productName: req.body.productName,
@@ -29,4 +28,13 @@ exports.create = function(req, res) {
           }
 
   });
+};
+//-----------------------------------------------------------------------------
+// Function that gets all Products from the database
+exports.getAllProducts = function(req, res) {
+
+  productsModel.getAll({ name: 1},function(products){
+    res.send(products);
+  });
+    
 };

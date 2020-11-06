@@ -11,7 +11,7 @@ router.get('/AboutUs',(req,res)=>{
     res.send('This is the About Us Page');
 });
 
-router.get('/ProductsPage',(req,res)=>{
+router.get('/ProductsPage',productsController.getAllProducts,(req,res)=>{
     // create the res.render here
     res.send('This is the Products Page');
 });

@@ -17,3 +17,19 @@ exports.createProduct = function(obj, next) {
       next(err, product);
     });
   };
+
+// function that gets all the product from the database
+exports.getAll = function(sort, next){
+    Products.find({}).sort(sort).exec(function(err, result) {
+    if (err) throw err;
+    var productsObject = [];
+
+    result.forEach(function(doc) {
+        productsObject.push(doc.toObject());
+    });
+
+    next(productsObject);
+  });
+
+
+};
