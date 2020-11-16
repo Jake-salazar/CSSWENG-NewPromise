@@ -33,7 +33,8 @@ exports.create = function(req, res) {
 exports.getAllProducts = function(req, res) {
 
   productsModel.getAll({ name: 1},function(products){
-    res.send(products);
+  // uncomment this to sent the products from the database
+   res.send(products);
   });
     
 };

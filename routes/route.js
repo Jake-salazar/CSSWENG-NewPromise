@@ -3,7 +3,7 @@ const productsController = require('../controllers/productsController'); //conne
 const router = express.Router();
 
 router.get('/',(req,res)=>{
-    res.send('This is the Landing Page');
+    res.render('home');
 });
 
 router.get('/AboutUs',(req,res)=>{
