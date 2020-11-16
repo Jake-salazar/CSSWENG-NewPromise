@@ -30,6 +30,12 @@ exports.getAll = function(sort, next){
 
     next(productsObject);
   });
-
-
 };
+
+
+// Function that deletes a product from the database // FIXING
+exports.remove = function(query, next) {
+    Products.findByIdAndRemove(query, function(err, product){
+      next(err, product);
+    });
+  };

@@ -28,7 +28,8 @@ router.get('/Reviews',(req,res)=>{
 });
 
 
-router.post('/addProducts', productsController.create);
+router.post('/addProducts', productsController.create); // WORKING
+router.post('/products/delete/:id',productsController.delete); // FIXING
 
 // router.post('/',(req,res)=>{
 //     // create the res.render here

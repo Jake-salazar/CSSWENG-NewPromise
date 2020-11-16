@@ -1,6 +1,6 @@
 const productsModel = require('../models/Products');
 
-// Function that creates a Product
+// Function that creates a Product // WORKING
 exports.create = function(req, res) {
   var product = {
     productName: req.body.productName,
@@ -9,7 +9,6 @@ exports.create = function(req, res) {
     productPrice: req.body.productPrice,
     productID: req.body.productID
   };
-
   productsModel.createProduct(product, function(err, product){
       var result;
       
@@ -30,11 +29,25 @@ exports.create = function(req, res) {
   });
 };
 //-----------------------------------------------------------------------------
-// Function that gets all Products from the database
+// Function that gets all Products from the database // WORKING!
 exports.getAllProducts = function(req, res) {
 
   productsModel.getAll({ name: 1},function(products){
     res.send(products);
   });
     
+};
+//------------------------------------------------------------------------------
+// Function that deletes a Product from the database // FIXING!
+exports.delete = (req, res) => {
+  var id = req.params.id;
+  
+  productsModel.remove(id, (err, result) => {
+    if (err) {
+      throw err; 
+    } 
+    else {
+      console.log('Successful');
+    }
+  }); 
 };
