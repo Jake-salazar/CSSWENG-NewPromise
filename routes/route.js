@@ -8,23 +8,23 @@ router.get('/',(req,res)=>{
 
 router.get('/AboutUs',(req,res)=>{
     // create the res.render here
-    res.send('This is the About Us Page');
+    res.render('about');
 });
 
 router.get('/ProductsPage',productsController.getAllProducts,(req,res)=>{
     // create the res.render here
-    res.send('This is the Products Page');
+    res.render('products');
 });
 
 
 router.get('/FAQ',(req,res)=>{
     // create the res.render here
-    res.send('This is the FAQ page');
+    res.render('FAQ');
 });
 
 router.get('/Reviews',(req,res)=>{
     // create the res.render here
-    res.send('This is the Reviews page');
+    res.render('reviews');
 });
 
 
