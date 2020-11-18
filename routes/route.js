@@ -11,9 +11,14 @@ router.get('/AboutUs',(req,res)=>{
     res.render('about');
 });
 
-router.get('/ProductsPage',productsController.getAllProducts,(req,res)=>{
+router.get('/ProductsPage',/*productsController.getAllProducts,*/(req,res)=>{
     // create the res.render here
     res.render('products');
+});
+
+router.get('/products-details',(req,res)=>{
+    // create the res.render here
+    res.render('products-details');
 });
 
 
