@@ -22,6 +22,7 @@ a:hover {
   text-decoration: none;
 }
 
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Muli", sans-serif;
 }
@@ -1586,6 +1587,11 @@ section {
   text-align-last: right;
 }
 
+.choicebutton {
+  -moz-text-align-last: right;
+  text-align-last: right;
+}
+
 .blog .entry .entry-content .read-more a {
   display: inline-block;
   background: #f03c02;
@@ -1596,8 +1602,37 @@ section {
   border-radius: 4px;
 }
 
+
+.choicebutton a {
+  display: inline-block;
+  background: #0acc03;
+  color: #fff;
+  padding: 6px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.choicebutton b {
+  display: inline-block;
+  background: #d60303;
+  color: #fff;
+  padding: 6px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
 .blog .entry .entry-content .read-more a:hover {
   background: #fd541e;
+}
+
+.choicebutton a:hover {
+  background: #4fe215;
+}
+
+.choicebutton b:hover {
+  background: #dd3f3f;
 }
 
 .blog .entry .entry-content h3 {

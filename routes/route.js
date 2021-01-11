@@ -21,6 +21,21 @@ router.get('/products-details',(req,res)=>{
     res.render('products-details');
 });
 
+router.get('/login',(req,res)=>{
+    // create the res.render here
+    res.render('login');
+});
+
+router.get('/admin',(req,res)=>{
+    // create the res.render here
+    res.render('admin');
+});
+
+router.get('/adminreviews',(req,res)=>{
+    // create the res.render here
+    res.render('adminreviews');
+});
+
 
 router.get('/FAQ',(req,res)=>{
     // create the res.render here
