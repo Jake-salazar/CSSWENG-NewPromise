@@ -36,6 +36,31 @@ router.get('/adminreviews',(req,res)=>{
     res.render('adminreviews');
 });
 
+router.get('/admincatalogue',(req,res)=>{
+    // create the res.render here
+    res.render('admincatalogue');
+});
+
+router.get('/catalogue-details',(req,res)=>{
+    // create the res.render here
+    res.render('catalogue-details');
+});
+
+router.get('/catalogue-details-new',(req,res)=>{
+    // create the res.render here
+    res.render('catalogue-details-new');
+});
+
+router.get('/cart',(req,res)=>{
+    // create the res.render here
+    res.render('cart');
+});
+
+router.get('/item-details',(req,res)=>{
+    // create the res.render here
+    res.render('item-details');
+});
+
 
 router.get('/FAQ',(req,res)=>{
     // create the res.render here

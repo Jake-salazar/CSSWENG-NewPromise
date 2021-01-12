@@ -1592,6 +1592,11 @@ section {
   text-align-last: right;
 }
 
+.newstock {
+  -moz-text-align-last: right;
+  text-align-last: right;
+}
+
 .blog .entry .entry-content .read-more a {
   display: inline-block;
   background: #f03c02;
@@ -1606,6 +1611,16 @@ section {
 .choicebutton a {
   display: inline-block;
   background: #0acc03;
+  color: #fff;
+  padding: 6px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.newstock a {
+  display: inline-block;
+  background: #099404;
   color: #fff;
   padding: 6px 20px;
   transition: 0.3s;
@@ -1629,6 +1644,10 @@ section {
 
 .choicebutton a:hover {
   background: #4fe215;
+}
+
+.newstock a:hover {
+  background: #3fc20c;
 }
 
 .choicebutton b:hover {
@@ -2231,4 +2250,194 @@ section {
   background: #fd5c28;
   color: #fff;
   text-decoration: none;
+}
+
+/* Additional*/
+.dropdown-menu.extended {
+
+  max-width: 300px !important;
+
+  min-width: 160px !important;
+
+  top: 42px;
+
+  width: 235px !important;
+
+  padding: 0;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.176) !important;
+
+  border: none !important;
+
+  border-radius: 4px;
+
+  -webkit-border-radius: 4px;
+
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+  /* Safari and Chrome */
+
+  .dropdown-menu.extended  {
+
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.176) !important;
+
+  };
+
+}
+
+.dropdown-menu.extended li p {
+
+  background-color: #F1F2F7;
+
+  color: #666666;
+
+  margin: 0;
+
+  padding: 10px;
+
+}
+
+
+.dropdown-menu.extended li p.default {
+
+  background-color: #f03c02;
+
+  color: #fff;
+
+}
+
+.dropdown-menu.extended li a {
+
+  border-bottom: 1px solid #EBEBEB !important;
+
+  font-size: 12px;
+
+  list-style: none;
+
+}
+
+
+
+.dropdown-menu.extended li a {
+
+  padding: 15px 10px !important;
+
+  width: 100%;
+
+  display: inline-block;
+
+}
+
+
+
+.dropdown-menu.extended li a:hover {
+
+  background-color: #F7F8F9 !important;
+
+  color: #2E2E2E;
+
+  border-bottom: 1px solid #f03c02 !important;
+
+}
+
+
+
+.dropdown-menu.tasks-bar .task-info .desc {
+
+  font-size: 13px;
+
+  font-weight: normal;
+
+}
+
+
+
+.dropdown-menu.tasks-bar .task-info .percent {
+
+  display: inline-block;
+
+  float: right;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  padding-left: 10px;
+
+  margin-top: -4px;
+
+}
+
+
+
+.dropdown-menu.extended .progress {
+
+  margin-bottom: 0 !important;
+
+  height: 10px;
+
+}
+
+
+
+.dropdown-menu.inbox li a .photo img {
+
+  border-radius: 2px 2px 2px 2px;
+
+  float: left;
+
+  height: 40px;
+
+  margin-right: 4px;
+
+  width: 40px;
+
+}
+
+
+
+.dropdown-menu.inbox li a .subject {
+
+  display: block;
+
+}
+
+
+
+.dropdown-menu.inbox li a .subject .from {
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+}
+
+
+
+.dropdown-menu.inbox li a .subject .time {
+
+  font-size: 11px;
+
+  font-style: italic;
+
+  font-weight: bold;
+
+  position: absolute;
+
+  right: 5px;
+
+}
+
+
+
+.dropdown-menu.inbox li a .message {
+
+  display: block !important;
+
+  font-size: 11px;
+
+
+
 }
