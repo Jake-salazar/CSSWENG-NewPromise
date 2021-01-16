@@ -51,6 +51,16 @@ router.get('/catalogue-details-new',(req,res)=>{
     res.render('catalogue-details-new');
 });
 
+router.get('/adminorders',(req,res)=>{
+    // create the res.render here
+    res.render('adminorders');
+});
+
+router.get('/orderdetails',(req,res)=>{
+    // create the res.render here
+    res.render('orderdetails');
+});
+
 router.get('/cart',(req,res)=>{
     // create the res.render here
     res.render('cart');
