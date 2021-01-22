@@ -66,6 +66,11 @@ router.get('/cart',(req,res)=>{
     res.render('cart');
 });
 
+router.get('/addtocart',(req,res)=>{
+    // create the res.render here
+    res.render('addtocart');
+});
+
 router.get('/item-details',(req,res)=>{
     // create the res.render here
     res.render('item-details');

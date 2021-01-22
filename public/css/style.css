@@ -437,6 +437,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #f03c02;
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #hero .carousel-inner .carousel-item {
@@ -853,6 +854,31 @@ section {
   background: #f03c02;
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
+}
+
+#portfolio-details .btn-get-started{
+  font-family: "Muli", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  margin: 10px;
+  color: #f03c02;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #f03c02;
+}
+
+#portfolio-details .btn-get-started:hover{
+  background: #f03c02;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /*--------------------------------------------------------------
@@ -2471,4 +2497,130 @@ thead th, tr td{
 
   margin-top: 1px;
 
+}
+
+.popup .overlay {
+  position:fixed;
+  top:0px;
+  left:0px;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.7);
+  z-index:1;
+  display:none;
+}
+
+.popup .content {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%) scale(0);
+  background:#fff;
+  width:550px;
+  height:270px;
+  z-index:2;
+  text-align:center;
+  padding:20px;
+  box-sizing:border-box;
+  font-family:"Open Sans",sans-serif;
+}
+
+.popup .close-btn {
+  cursor:pointer;
+  position:absolute;
+  right:20px;
+  top:20px;
+  width:30px;
+  height:30px;
+  background:#222;
+  color:#fff;
+  font-size:25px;
+  font-weight:600;
+  line-height:30px;
+  text-align:center;
+  border-radius:50%;
+}
+
+.popup.active .overlay {
+  display:block;
+}
+
+.popup.active .content {
+  transition:all 300ms ease-in-out;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+#popup .btn-get-started{
+  font-family: "Muli", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  margin: 10px;
+  color: #fff;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #f03c02;
+  background-color: #f03c02;
+}
+
+#popup .btn-get-started:hover{
+  background: #fff;
+  color: #f03c02;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#popup2 .btn-get-started{
+  font-family: "Muli", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  margin: 10px;
+  color: #fff;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #eca41e;
+  background-color: #eca41e;
+}
+
+#popup2 .btn-get-started:hover{
+  background: #fff;
+  color: #eca41e;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#removecart .btn-get-started{
+  font-family: "Muli", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  margin: 10px;
+  color: #fff;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #e93030;
+  background-color: #e93030;
+}
+
+#removecart .btn-get-started:hover{
+  background: #fff;
+  color: #e93030;
+  text-decoration: none;
+  cursor: pointer;
 }

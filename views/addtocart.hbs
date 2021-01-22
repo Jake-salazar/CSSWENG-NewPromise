@@ -6,10 +6,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Item Details</h2>
+          <h2>Add to Cart</h2>
           <ol>
             <li><a href="/">Home</a></li>
-            <li>Item Details</li>
+            <li>Add to Cart</li>
           </ol>
         </div>
 
@@ -19,7 +19,7 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        <h2 class="portfolio-title">This is an example of item detail</h2>
+        <h2 class="portfolio-title">This is an example of add to cart</h2>
         <div class="row">
 
           <div class="col-lg-8" data-aos="fade-right">
@@ -35,8 +35,8 @@
             <ul>
               <li><strong>Category</strong>: Paints</li>
               <li><strong>Price</strong>: ₱ 500.00</li>
-              <li><strong>Quantity</strong>: <input type="number" value="5"></li>
-              <li><a id="removecart" class="btn-get-started">Remove from Cart</a></li>
+              <li><strong>Quantity</strong>: </i><input type="number" value="1"></i></li>
+              <li><button class="btn-get-started" onclick="togglePopup()">Add to Cart</button></li>
             </ul>
 
             <p>
@@ -49,4 +49,24 @@
       </div>
     </section><!-- End Portfolio Details Section -->
 
+    <div class="popup" id="popup-1">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="close-btn" onclick="togglePopup()">&times;</div>
+        <h1>Product added to cart!</h1>
+        <div id="popup2">
+          <a href="ProductsPage" class="btn-get-started">ADD MORE PRODUCTS</a>
+        </div>
+        <div id="popup">
+          <a href="cart" class="btn-get-started">PROCEED TO CHECKOUT</a>
+        </div>
+      </div>
+    </div>
+
   </main><!-- End #main -->
+
+  <script>
+    function togglePopup(){
+      document.getElementById("popup-1").classList.toggle("active");
+    }
+  </script>
