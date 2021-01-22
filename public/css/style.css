@@ -785,7 +785,19 @@ section {
   color: #483b36;
 }
 
+.portfolio .portfolio-item .portfolio-info .cart{
+  position: absolute;
+  right: 40px;
+  font-size: 24px;
+  top: calc(50% - 18px);
+  color: #483b36;
+}
+
 .portfolio .portfolio-item .portfolio-info .preview-link:hover, .portfolio .portfolio-item .portfolio-info .details-link:hover {
+  color: #f03c02;
+}
+
+.portfolio .portfolio-item .portfolio-info .cart:hover{
   color: #f03c02;
 }
 
