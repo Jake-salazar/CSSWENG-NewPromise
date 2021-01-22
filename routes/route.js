@@ -4,6 +4,8 @@ const router = express.Router();
 
 router.get('/',(req,res)=>{
     res.render('home');
+
+   
 });
 
 router.get('/AboutUs',(req,res)=>{
@@ -11,9 +13,10 @@ router.get('/AboutUs',(req,res)=>{
     res.render('about');
 });
 
-router.get('/ProductsPage',/*productsController.getAllProducts,*/(req,res)=>{
+router.get('/ProductsPage',productsController.getAllProducts,(req,res)=>{
     // create the res.render here
-    res.render('products');
+    // res.render('products');
+    // later we are gonna put posts to the products hbs
 });
 
 router.get('/products-details',(req,res)=>{
@@ -88,7 +91,21 @@ router.get('/Reviews',(req,res)=>{
 });
 
 
-router.post('/addProducts', productsController.create); // WORKING
+
+const multer  = require('multer')
+const storage = multer.diskStorage({ 
+  destination: './public/assets/',
+  filename: function(req, file, cb){
+    cb(null,file.originalname);
+  }
+});
+
+const upload = multer({
+  storage: storage,
+}).single('image');
+
+
+router.post('/addProducts',upload, productsController.create); // WORKING
 router.post('/products/delete/:id',productsController.delete); // FIXING
 
 // router.post('/',(req,res)=>{

@@ -25,35 +25,38 @@
 
           <div class="col-lg-8" data-aos="fade-right">
             <div class="owl-carousel portfolio-details-carousel">
-              <form action="/action_page.php">
-                <input type="file" id="myFile" name="filename">
+               <form enctype="multipart/form-data" action="/addProducts" method="POST"   >
+                <input type="file"  accept="image/*" name="image" id="file">
+                <h3><input name = "name" type="text" value="Name of Product"></h3>
+            <ul>
+              <li><strong>Category</strong>: <input name ="Category" type="text" value="Paints"></li>
+              <li><strong>Brand</strong>: ₱ <input name ="Brand"  type="text" value=""></li>
+              <li><strong>Description</strong>: ₱ <input name ="Description"  type="text" value=""></li>
+              <li><strong>Price</strong>: ₱ <input name ="Price"  type="text" value=""></li>
+              <li><strong>Quantity</strong>: <input name ="Quantity"  type="number" value=""></li>
+              <li><strong>Something</strong>: <a href="#">www.example.com</a></li>
+            </ul>
+            <div class="choicebutton">
+               <button type="submit">Post</button>
+                <b class="btn">Cancel</b>
+            </div>
               </form>
-              <form action="/action_page.php">
-                <input type="file" id="myFile" name="filename">
-              </form>
-              <form action="/action_page.php">
-                <input type="file" id="myFile" name="filename">
-              </form>
+                
+
+              
+
+    
             </div>
           </div>
 
           <div class="col-lg-4 portfolio-info" data-aos="fade-left">
-            <h3><input type="text" value="Name of Product"></h3>
-            <ul>
-              <li><strong>Category</strong>: <input type="text" value="Paints"></li>
-              <li><strong>Price</strong>: ₱ <input type="text" value=""></li>
-              <li><strong>Quantity</strong>: <input type="number" value=""></li>
-              <li><strong>Something</strong>: <a href="#">www.example.com</a></li>
-            </ul>
+            
 
             <p>
               Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
             </p>
 
-            <div class="choicebutton">
-                <a href="">Save</a>
-                <b class="btn">Cancel</b>
-            </div>
+            
           </div>
 
         </div>

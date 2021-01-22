@@ -1,10 +1,13 @@
 const mongoose = require('./connection');
 
 const productsSchema = mongoose.Schema({
+    img: { type: String, required: true },
+    productCategory: {type:String,required: true},
     productName:{ type: String, required: true},
     productBrand: { type: String, required: true},
     productDesc: { type: String, required: true},
-    productPrice: { type: Number, required: true}
+    productPrice: { type: Number, required: true},
+    productQuantity: {type: Number, required: true}
 });
 
 const Products = mongoose.model('Products',productsSchema);
