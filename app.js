@@ -20,8 +20,9 @@ app.set('view engine', 'hbs')
 
 
 //? Middlewares here
-app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 
 //? Partials and Static files
 app.use(express.static(__dirname + '/public/'))
