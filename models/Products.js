@@ -1,4 +1,4 @@
-const mongoose = require('./connection');
+const mongoose = require('./Connection');
 
 const productsSchema = mongoose.Schema({
     img: { type: String, required: true },
@@ -6,8 +6,8 @@ const productsSchema = mongoose.Schema({
     productName:{ type: String, required: true},
     productBrand: { type: String, required: true},
     productDesc: { type: String, required: true},
-    productPrice: { type: Number, required: true},
-    productQuantity: {type: Number, required: true}
+    productPrice: { type: String, required: true},
+    productQuantity: {type: String, required: true}
 });
 
 const Products = mongoose.model('Products',productsSchema);
@@ -40,5 +40,11 @@ exports.getAll = function(sort, next){
 exports.remove = function(query, next) {
     Products.findByIdAndRemove(query, function(err, product){
       next(err, product);
+    });
+  };
+
+  exports.getAll = (param, next) => {
+    Products.find({}, (err, posts) => {
+      next(err, posts);
     });
   };

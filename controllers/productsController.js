@@ -36,6 +36,7 @@ exports.create = function(req, res) {
 exports.getAllProducts = function(req, res) {
 
   productsModel.getAll({ name: 1},function(products){
+  console.log("all of the Products")
   console.log(products);
   res.render('products');
   // res.send(products);
@@ -65,4 +66,19 @@ exports.delete = (req, res) => {
       console.log('Successful');
     }
   }); 
+};
+
+
+exports.getAllPosts = (param, callback) =>{
+  productsModel.getAll(param, (err, posts) => {
+    if (err) throw err;
+    
+    const postObjects = [];
+    
+    posts.forEach(function(doc) {
+      postObjects.push(doc.toObject());
+    });
+    
+    callback(postObjects);
+  });
 };

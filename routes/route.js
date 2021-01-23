@@ -3,9 +3,13 @@ const productsController = require('../controllers/productsController'); //conne
 const router = express.Router();
 
 router.get('/',(req,res)=>{
-    res.render('home');
-
-   
+    productsController.getAllPosts(req, (posts) => {
+        console.log('posts: ');
+        console.log(posts)
+        res.render('home',{ 
+            item: posts,
+          });
+      });
 });
 
 router.get('/AboutUs',(req,res)=>{
