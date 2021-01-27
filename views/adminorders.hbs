@@ -1,10 +1,8 @@
 {{> navadmin}}
 <main id="main">
-
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
           <h2>Orders</h2>
           <ol>
@@ -12,135 +10,220 @@
             <li>Orders</li>
           </ol>
         </div>
-
       </div>
     </section><!-- End Breadcrumbs -->
-
-    
-
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
-      
-
       <div class="container">
         <div class="nav search-row" id="top_menu">
             <ul class="nav top-menu">
               <li>
                 <form class="navbar-form">
-                  <input class="form-control" placeholder="Search" type="text">
+                  <input class="form-control" placeholder="Search" type="text" width="50">
                 </form>
               </li>
             </ul>
+             
          </div>
-         <br>
         <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <div class="testimonial-item">
-              <img src="./assets/neworder.png" class="testimonial-img" alt="">
-              <h3>Customer Name</h3>
-              <h4>March 23, 2020</h4>
-              <p>
-                  Total of 5 items: Paint, Wood, Roof, Something, Something
-              </p>
-              <br>
-              <div class="choicebutton">
-                <a class="viewbtn" href="orderdetails">View</a>
-                <b class="btn">Delete</b>
-              </div>
-            </div>
-            
+          <div class="col-lg-12">
+            <section class="panel">
+              <header class="panel-heading">
+                Order Table
+              </header>
+              <table class="table table-striped table-advance table-hover">
+                <tbody>
+                  <tr>
+                    <th><i class="icon_profile"></i>ID</th>
+                    <th><i class="icon_calendar"></i>DATE</th>
+                    <th><i class="icon_mail_alt"></i>STATUS</th>
+                    <th><i class="icon_mail_alt"></i>ITEMS</th>
+                    <th><i class="icon_pin_alt"></i>CUSTOMER ADDRESS</th>
+                    <th><i class="icon_mobile"></i>EMAIL</th>
+                    <th><i class="icon_cogs"></i>DELIVERY DATE</th>
+                    <th><i class="icon_cogs"></i>COST PAID</th>
+                    <th><i class="icon_cogs"></i>ACTIONS</th>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(50, 192, 50);" onclick="changecolor()">NEW</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(50, 192, 50);" onclick="changecolor()">NEW</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(196, 29, 0);" onclick="changecolor()">OLD</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(196, 29, 0);" onclick="changecolor()">OLD</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(196, 29, 0);" onclick="changecolor()">OLD</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(196, 29, 0);" onclick="changecolor()">OLD</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(196, 29, 0);" onclick="changecolor()">OLD</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(196, 29, 0);" onclick="changecolor()">OLD</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(196, 29, 0);" onclick="changecolor()">OLD</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1980043</td>
+                    <td>2004-07-06</td>
+                    <td><a id="change" href="#" style="color: rgb(196, 29, 0);" onclick="changecolor()">OLD</a></td>
+                    <td>5</td>
+                    <td>76 Taft Ave. Manila</td>
+                    <td>customer@gmail.com</td>
+                    <td>2021-01-27</td>
+                    <td>₱ 500.00</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-primary" href="#"><i class="bx bx-plus"></i></a>
+                        <a class="btn btn-success" href="orderdetails"><i class="bx bx-pencil"></i></a>
+                        <a class="btn btn-danger" href="#"><i class="bx bx-trash"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
           </div>
-          
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <div class="testimonial-item">
-              <img src="./assets/neworder.png" class="testimonial-img" alt="">
-              <h3>Customer Name</h3>
-              <h4>March 23, 2020</h4>
-              <p>
-                  Total of 5 items: Paint, Wood, Roof, Something, Something
-              </p>
-              <br>
-              <div class="choicebutton">
-                <a class="viewbtn" href="orderdetails">View</a>
-                <b class="btn">Delete</b>
-              </div>
-            </div>
-            
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <div class="testimonial-item">
-              <img src="./assets/oldorder.png" class="testimonial-img" alt="">
-              <h3>Customer Name</h3>
-              <h4>March 23, 2020</h4>
-              <p>
-                  Total of 5 items: Paint, Wood, Roof, Something, Something
-              </p>
-              <br>
-              <div class="choicebutton">
-                <a href="orderdetails">View</a>
-                <b class="btn">Delete</b>
-              </div>
-            </div>
-            
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <div class="testimonial-item">
-              <img src="./assets/oldorder.png" class="testimonial-img" alt="">
-              <h3>Customer Name</h3>
-              <h4>March 23, 2020</h4>
-              <p>
-                  Total of 5 items: Paint, Wood, Roof, Something, Something
-              </p>
-              <br>
-              <div class="choicebutton">
-                <a class="viewbtn" href="orderdetails">View</a>
-                <b class="btn">Delete</b>
-              </div>
-            </div>
-            
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <div class="testimonial-item">
-              <img src="./assets/oldorder.png" class="testimonial-img" alt="">
-              <h3>Customer Name</h3>
-              <h4>March 23, 2020</h4>
-              <p>
-                  Total of 5 items: Paint, Wood, Roof, Something, Something
-              </p>
-              <br>
-              <div class="choicebutton">
-                <a class="viewbtn" href="orderdetails">View</a>
-                <b class="btn">Delete</b>
-              </div>
-            </div>
-            
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up">
-            <div class="testimonial-item">
-              <img src="./assets/oldorder.png" class="testimonial-img" alt="">
-              <h3>Customer Name</h3>
-              <h4>March 23, 2020</h4>
-              <p>
-                  Total of 5 items: Paint, Wood, Roof, Something, Something
-              </p>
-              <br>
-              <div class="choicebutton">
-                <a class="viewbtn" href="orderdetails">View</a>
-                <b class="btn">Delete</b>
-              </div>
-            </div>
-            
-          </div>
-
         </div>
-
       </div>
     </section><!-- End Testimonials Section -->
-
   </main><!-- End #main -->
+<script>
+      function changecolor() {
+         return false;
+      }
+</script>
