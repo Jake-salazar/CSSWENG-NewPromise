@@ -33,21 +33,28 @@
       
         <div class="row portfolio-container" data-aos="fade-up">
 
+          {{#if products}} 
+          {{#each products }}
           
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="./assets/products/boysenpaint.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Boysen Paints x 5</h4>
-              <p>₱ 500.00</p>
-              <a class="cart" title="Delete"><i class="bx bx-trash"></i></a>
-              <a href="/item-details" class="details-link" title="Edit"><i class="bx bx-pencil"></i></a>
-            </div>
-          </div>
+           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+              <img src= {{this.item.img}} class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4> {{this.item.productName}} x {{this.qty}}</h4>
+                <p>₱ {{this.price}}</p>
+                <a class="cart" title="Delete"><i class="bx bx-trash"></i></a>
+                <a href="/item-details" class="details-link" title="Edit"><i class="bx bx-pencil"></i></a>
+             </div>
+           </div>
+          {{/each }}
+          
+          {{else}}
+            <h1>No Products Yet!</h1>
+           {{/if}}
 
 
 
         </div>
-        <h2 style="float: right;">Total: ₱ 500.00</h2>
+        <h2 style="float: right;">Total: {{this.totalPrice}}</h2>
         <br><br>
         <a href="" class="btn-get-started" style="float: right;">PROCEED TO CHECKOUT</a>
       </div>

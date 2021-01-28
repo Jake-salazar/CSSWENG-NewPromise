@@ -161,6 +161,15 @@ router.get('/add-to-cart/:id',(req,res)=>{
 
 });
 
+router.get('/seecart',(req,res)=>{
+    console.log('see cart opened!');
+    if (!req.session.cart){
+        return res.render('cart',{products:null});
+    }
+    var cart = new Cart(req.session.cart);
+    res.render('cart',{products: cart.generateArray(),totalPrice: cart.totalPrice});
+});
+
 
 
 
