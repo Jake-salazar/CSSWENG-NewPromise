@@ -1,6 +1,5 @@
 {{> nav}}
 <main id="main">
-
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
       <div class="container">
@@ -9,7 +8,7 @@
           <h2>Product Details</h2>
           <ol>
             <li><a href="/">Home</a></li>
-            <li>Product Details</li>
+            <li>{{item.productName}}</li>
           </ol>
         </div>
 
@@ -19,24 +18,22 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        <h2 class="portfolio-title">This is an example of product detail</h2>
+        <h2 class="portfolio-title">{{item.productName}}</h2>
         <div class="row">
 
           <div class="col-lg-8" data-aos="fade-right">
             <div class="owl-carousel portfolio-details-carousel">
-              <img src="./assets/products/steelroof.jpg" class="img-fluid" alt="">
-              <img src="./assets/products/morewoods.jpg" class="img-fluid" alt="">
-              <img src="./assets/products/spheroepoxy.jpg" class="img-fluid" alt="">
+              <img src= {{item.img}} class="img-fluid" alt="">
             </div>
           </div>
 
           <div class="col-lg-4 portfolio-info" data-aos="fade-left">
-            <h3>Name of Product</h3>
+            <h3>{{item.productName}}</h3>
             <ul>
-              <li><strong>Category</strong>: Paints</li>
-              <li><strong>Price</strong>: ₱</li>
-              <li><strong>Stocks</strong>: 100</li>
-              <li><strong>Something</strong>: <a href="#">www.example.com</a></li>
+              <li><strong>Category</strong>: {{item.productCategory}}</li>
+              <li><strong>Price</strong>: ₱{{item.productPrice}}</li>
+              <li><strong>Stocks</strong>: {{item.productQuantity}}</li>
+              <li><strong>Description:</strong>: {{item.productDesc}}</li>
             </ul>
 
             <p>

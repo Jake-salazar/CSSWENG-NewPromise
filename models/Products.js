@@ -48,3 +48,11 @@ exports.remove = function(query, next) {
       next(err, posts);
     });
   };
+
+
+  // GET ID
+  exports.getByID = function(query, next) {
+    Products.findById(query, function(err, post) {
+      next(err, post);
+    });
+  };

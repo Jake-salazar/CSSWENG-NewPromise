@@ -12,9 +12,11 @@ router.get('/',(req,res)=>{
       });
 });
 
+
+
 router.get('/AboutUs',(req,res)=>{
     // create the res.render here
-    res.render('about');
+    res.render('products-details');
 });
 
 router.get('/ProductsPage',productsController.getAllProducts,(req,res)=>{
@@ -23,10 +25,10 @@ router.get('/ProductsPage',productsController.getAllProducts,(req,res)=>{
     // later we are gonna put posts to the products hbs
 });
 
-router.get('/products-details',(req,res)=>{
+/* router.get('/products-details',(req,res)=>{
     // create the res.render here
     res.render('products-details');
-});
+}); */
 
 router.get('/login',(req,res)=>{
     // create the res.render here
@@ -114,4 +116,19 @@ router.post('/products/delete/:id',productsController.delete); // FIXING
 //     // create the res.render here
 //     console.log(req.body);
 // });
+router.get('/post/view/:id', (req, res) => {
+    console.log("Read view successful!");
+  
+    productsController.getID(req, (post) => {
+        console.log("post items:");
+        console.log(post);
+        res.render('products-details', { 
+          item: post 
+        });
+      });
+ 
+});
+
+
+
 module.exports = router;

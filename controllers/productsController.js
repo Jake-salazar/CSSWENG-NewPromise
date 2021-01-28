@@ -82,3 +82,18 @@ exports.getAllPosts = (param, callback) =>{
     callback(postObjects);
   });
 };
+
+
+// get ID
+exports.getID = (req, res) => {
+  var id = req.params.id;
+
+  productsModel.getByID(id, (err, result) => {
+    if (err) {
+      throw err;
+    } else {
+      var postObject = result.toObject();
+      res(postObject);
+    }
+  });
+};
