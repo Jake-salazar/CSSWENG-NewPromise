@@ -37,7 +37,12 @@ router.get('/login',(req,res)=>{
 
 router.get('/admin',(req,res)=>{
     // create the res.render here
-    res.render('admin');
+    productsController.getAllPosts(req, (posts) => {
+        console.log(posts)
+        res.render('admin',{ 
+            item: posts,
+          });
+      });
 });
 
 router.get('/adminreviews',(req,res)=>{

@@ -1,0 +1,11 @@
+  {{#each item}}
+ <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src= {{img}} class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{productName}} x {{productQuantity}}</h4>
+              <p>₱ {{productPrice}}</p>
+              <a class="cart" title="Delete"><i class="bx bx-trash"></i></a>
+              <a href="/catalogue-details" class="details-link" title="Edit"><i class="bx bx-pencil"></i></a>
+            </div>
+</div>
+{{/each}}
