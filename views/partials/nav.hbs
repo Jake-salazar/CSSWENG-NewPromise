@@ -42,54 +42,27 @@
               <li>
                 <p class="default">You have {{session.cart.totalQty}} items in your cart</p>
               </li>
+               {{#if products}} 
+              {{#each products }}
               <li>
                 <a href="item-details">
-                                    <span class="photo"><img alt="avatar" src="./assets/products/boysenpaint.jpg"></span>
+                                    <span class="photo"><img alt="avatar" src={{this.item.img}}></span>
                                     <span class="subject">
-                                    <span class="from">Boysen Paint</span>
-                                    <span class="time">1 pc</span>
+                                    <span class="from">{{this.item.productName}}</span>
+                                    <span class="time">{{this.qty}}</span>
                                     </span>
                                     <span class="message">
-                                        ₱ 500.00
+                                        ₱ {{this.price}}
                                     </span>
-                                </a>
+                  </a>
               </li>
-              <li>
-                <a href="item-details">
-                                    <span class="photo"><img alt="avatar" src="./assets/products/boysenpaint.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Boysen Paint</span>
-                                    <span class="time">5 pcs</span>
-                                    </span>
-                                    <span class="message">
-                                        ₱ 500.00
-                                    </span>
-                                </a>
+               {{/each }}
+               {{else}}
+                <li>
+                    <span class="from">No Products Yet!</span>
               </li>
-              <li>
-                <a href="item-details">
-                                    <span class="photo"><img alt="avatar" src="./assets/products/boysenpaint.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Boysen Paint</span>
-                                    <span class="time">2 pcs</span>
-                                    </span>
-                                    <span class="message">
-                                          ₱ 500.00
-                                    </span>
-                                </a>
-              </li>
-              <li>
-                <a href="item-details">
-                                    <span class="photo"><img alt="avatar" src="./assets/products/boysenpaint.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Boysen Paint</span>
-                                    <span class="time">1 pc</span>
-                                    </span>
-                                    <span class="message">
-                                          ₱ 500.00
-                                    </span>
-                                </a>
-              </li>
+              {{/if}}
+
               <li>
                 <a href="/seecart">See all items</a>
               </li>

@@ -4,13 +4,25 @@ const router = express.Router();
 var Cart = require('../models/Cart');
 
 router.get('/',(req,res)=>{
-    productsController.getAllPosts(req, (posts) => {
-        //console.log('posts: ');
-        //console.log(posts)
-        res.render('home',{ 
-            item: posts,
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    if (!req.session.cart){
+        productsController.getAllPosts(req, (posts) => {
+            res.render('home',{ 
+                item: posts,
+                products:null
+              });
           });
-      });
+    }
+    else{
+        var cart = new Cart(req.session.cart);
+        productsController.getAllPosts(req, (posts) => {
+            res.render('home',{ 
+                item: posts,
+                products: cart.generateArray(),totalPrice: cart.totalPrice
+              });
+          });
+    }
+   
 });
 
 
