@@ -29,7 +29,17 @@ router.get('/',(req,res)=>{
 
 router.get('/AboutUs',(req,res)=>{
     // create the res.render here
-    res.render('products-details');
+    res.render('about');
+});
+
+router.get('/Checkout',(req,res)=>{
+    // create the res.render here
+    res.render('checkout');
+});
+
+router.get('/feedback',(req,res)=>{
+    // create the res.render here
+    res.render('feedback');
 });
 
 router.get('/ProductsPage',productsController.getAllProducts,(req,res)=>{

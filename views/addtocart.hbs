@@ -30,17 +30,22 @@
           </div>
   
           <div class="col-lg-4 portfolio-info" data-aos="fade-left">
-            <h3>{{item.productName}}</h3>
-            <ul>
-              <li><strong>Category</strong>: {{item.productCategory}}</li>
-              <li><strong>Price</strong>: ₱ {{item.productPrice}}</li>  
-              <li><strong>Quantity</strong>: </i><input name ="Quantity"  type="number" value="1"></i></li>
-              <li><button class="btn-get-started" onclick="togglePopup()">Add to Cart</button></li>
-            </ul>
+            
+              <h3>{{item.productName}}</h3>
+                <ul>
+                  <li><strong>Category</strong>: {{item.productCategory}}</li>
+                  <li><strong>Price</strong>: ₱ {{item.productPrice}}</li> 
+                  <form action=""></form> 
+                    <li><strong>Quantity</strong>: </i><input name ="Quantity"  type="number" value="1"></i></li>
+                    <li><button class="btn-get-started" onclick="togglePopup()">Add to Cart</button></li>
+                  </form>
+                </ul>
 
-            <p>
-              Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-            </p>
+                <p>
+                  Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                </p>
+           
+            
           </div>
 
         </div>
@@ -48,7 +53,7 @@
       </div>
     </section><!-- End Portfolio Details Section -->
 
-    <div class="popup" id="popup-1">
+    {{!-- <div class="popup" id="popup-1">
       <div class="overlay"></div>
       <div class="content">
         <div class="close-btn" onclick="togglePopup()">&times;</div>
@@ -62,10 +67,10 @@
       </div>
     </div>
 
-  </main><!-- End #main -->
+  </main><!-- End #main --> --}}
 
-  <script>
-    function togglePopup(){
+  {{!-- <script>
+    /*function togglePopup(){
       document.getElementById("popup-1").classList.toggle("active");
-    }
-  </script>
+    }*/
+  </script> --}}
