@@ -19,22 +19,21 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        <h2 class="portfolio-title">This is an example of add to cart</h2>
+        <h2 class="portfolio-title">{{item.productName}}</h2>
         <div class="row">
 
           <div class="col-lg-8" data-aos="fade-right">
             <div class="owl-carousel portfolio-details-carousel">
-              <img src="./assets/products/boysenpaint.jpg" class="img-fluid" alt="">
-              <img src="./assets/products/morewoods.jpg" class="img-fluid" alt="">
-              <img src="./assets/products/spheroepoxy.jpg" class="img-fluid" alt="">
+              <img src= {{item.img}} class="img-fluid" alt="">
+
             </div>
           </div>
 
           <div class="col-lg-4 portfolio-info" data-aos="fade-left">
-            <h3>Name of Product</h3>
+            <h3>{{item.productName}}</h3>
             <ul>
-              <li><strong>Category</strong>: Paints</li>
-              <li><strong>Price</strong>: ₱ 500.00</li>
+              <li><strong>Category</strong>: {{item.productCategory}}</li>
+              <li><strong>Price</strong>: ₱ {{item.productPrice}}</li>
               <li><strong>Quantity</strong>: </i><input type="number" value="1"></i></li>
               <li><button class="btn-get-started" onclick="togglePopup()">Add to Cart</button></li>
             </ul>
@@ -55,7 +54,7 @@
         <div class="close-btn" onclick="togglePopup()">&times;</div>
         <h1>Product added to cart!</h1>
         <div id="popup2">
-          <a href="ProductsPage" class="btn-get-started">ADD MORE PRODUCTS</a>
+          <a href="/add-to-cart/{{item._id}}" class="btn-get-started">ADD MORE PRODUCTS</a>
         </div>
         <div id="popup">
           <a href="cart" class="btn-get-started">PROCEED TO CHECKOUT</a>

@@ -4,6 +4,10 @@ const path = require('path');
 const exphbs = require('express-handlebars')
 const bodyParser = require("body-parser")
 const appRoute = require('./routes/route');
+const mongoose = require('./models/connection');
+const session = require('express-session');
+const flash = require('connect-flash');
+const MongoStore = require('connect-mongo')(session);
 
 //TODO: DB connection here
 
@@ -22,6 +26,18 @@ app.set('view engine', 'hbs')
 //? Middlewares here
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(session({
+    secret: 'supersecret',
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 * 7 }
+  }));
+
+  app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+  });
 
 
 //? Partials and Static files

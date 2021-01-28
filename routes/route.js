@@ -1,11 +1,12 @@
 const express = require('express');
 const productsController = require('../controllers/productsController'); //connection to the controllers and database
 const router = express.Router();
+var Cart = require('../models/Cart');
 
 router.get('/',(req,res)=>{
     productsController.getAllPosts(req, (posts) => {
-        console.log('posts: ');
-        console.log(posts)
+        //console.log('posts: ');
+        //console.log(posts)
         res.render('home',{ 
             item: posts,
           });
@@ -101,7 +102,8 @@ router.get('/Reviews',(req,res)=>{
     res.render('reviews');
 });
 
-const multer  = require('multer')
+const multer  = require('multer');
+const e = require('express');
 const storage = multer.diskStorage({ 
   destination: './public/assets/',
   filename: function(req, file, cb){
@@ -131,7 +133,32 @@ router.get('/post/view/:id', (req, res) => {
           item: post 
         });
       });
- 
+});
+
+router.get('/post/view/addtocart/:id', (req, res) => {
+    console.log("Read view successful!");
+  
+    productsController.getID(req, (post) => {
+        console.log("post items:");
+        console.log(post);
+        res.render('addtocart', { 
+          item: post 
+        });
+      });
+});
+
+router.get('/add-to-cart/:id',(req,res)=>{
+    console.log("add to cart ");
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+
+    productsController.getID(req, (product) =>{
+        cart.add(product,product._id);
+        req.session.cart =cart;
+        console.log("addded!");
+        console.log(req.session.cart)
+        res.redirect('/');
+    });
+
 });
 
 
