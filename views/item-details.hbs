@@ -6,10 +6,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Item Details</h2>
+          <h2>Add to Cart</h2>
           <ol>
             <li><a href="/">Home</a></li>
-            <li>Item Details</li>
+            <li>Add to Cart</li>
           </ol>
         </div>
 
@@ -19,29 +19,34 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        <h2 class="portfolio-title">This is an example of item detail</h2>
+        <h2 class="portfolio-title">{{item.productName}}</h2>
         <div class="row">
 
           <div class="col-lg-8" data-aos="fade-right">
             <div class="owl-carousel portfolio-details-carousel">
-              <img src="./assets/products/boysenpaint.jpg" class="img-fluid" alt="">
-              <img src="./assets/products/morewoods.jpg" class="img-fluid" alt="">
-              <img src="./assets/products/spheroepoxy.jpg" class="img-fluid" alt="">
+              <img src= {{item.img}} class="img-fluid" alt="">
+
             </div>
           </div>
-
+  
           <div class="col-lg-4 portfolio-info" data-aos="fade-left">
-            <h3>Name of Product</h3>
-            <ul>
-              <li><strong>Category</strong>: Paints</li>
-              <li><strong>Price</strong>: ₱ 500.00</li>
-              <li><strong>Quantity</strong>: <input type="number" value="5"></li>
-              <li><a id="removecart" class="btn-get-started">Remove from Cart</a></li>
-            </ul>
+            
+              <h3>{{item.productName}}</h3>
+                <ul>
+                  <li><strong>Category</strong>: {{item.productCategory}}</li>
+                  <li><strong>Price</strong>: ₱ {{item.productPrice}}</li> 
+                  <form action="/Edited/item" method="POST" >
+                     <input name="id" type="hidden" value="{{item._id}}">
+                    <li><strong>Quantity</strong>: <input name ="Quantity"  type="number" value=""></li>
+                    <li><button class="btn-get-started" type="submit"> Add to Cart</button></li>
+                  </form>
+                </ul>
 
-            <p>
-              Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-            </p>
+                <p>
+                  Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                </p>
+           
+            
           </div>
 
         </div>
@@ -49,4 +54,24 @@
       </div>
     </section><!-- End Portfolio Details Section -->
 
-  </main><!-- End #main -->
+    {{!-- <div class="popup" id="popup-1">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="close-btn" onclick="togglePopup()">&times;</div>
+        <h1>Product added to cart!</h1>
+        <div id="popup2">
+          <a href="/add-to-cart/{{item._id}}" class="btn-get-started">ADD MORE PRODUCTS</a>
+        </div>
+        <div id="popup">
+          <a href="cart" class="btn-get-started">PROCEED TO CHECKOUT</a>
+        </div>
+      </div>
+    </div>
+
+  </main><!-- End #main --> --}}
+
+  {{!-- <script>
+    /*function togglePopup(){
+      document.getElementById("popup-1").classList.toggle("active");
+    }*/
+  </script> --}}

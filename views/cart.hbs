@@ -42,7 +42,7 @@
                 <h4> {{this.item.productName}} x {{this.qty}}</h4>
                 <p>₱ {{this.price}}</p>
                 <a class="cart" title="Delete"><i class="bx bx-trash"></i></a>
-                <a href="/item-details" class="details-link" title="Edit"><i class="bx bx-pencil"></i></a>
+                <a href="/edit/item/{{this.item._id}}" class="details-link" title="Edit"><i class="bx bx-pencil"></i></a>
              </div>
            </div>
           {{/each }}

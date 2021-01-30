@@ -215,6 +215,26 @@ router.get('/seecart',(req,res)=>{
 });
 
 
+router.get('/edit/item/:id', (req, res) => {  
+    productsController.getID(req, (post) => {
+        console.log(post);
+        res.render('item-details', { 
+          item: post 
+        });
+      });
+});
+
+
+router.post('/Edited/item',(req,res)=>{
+    console.log("IM HERE")
+    productsController.getByID(req, (product) =>{
+        cart.edit(product,req.body.id,req.body.Quantity);
+        req.session.cart =cart;        
+    });
+    var cart = new Cart(req.session.cart);
+    res.render('cart',{products: cart.generateArray(),totalPrice: cart.totalPrice});
+});
+
 
 
 module.exports = router;

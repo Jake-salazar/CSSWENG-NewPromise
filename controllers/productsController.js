@@ -100,7 +100,6 @@ exports.getID = (req, res) => {
 
 exports.getByID = (req, res) => {
   var id = req.body.id;
-  console.log(id);
 
   productsModel.getByID(id, (err, result) => {
     if (err) {
