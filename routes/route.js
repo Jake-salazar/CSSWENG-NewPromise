@@ -181,8 +181,27 @@ router.post('/cart/added',(req,res)=>{
         req.session.cart =cart;
         console.log("addded!");
         console.log(req.session.cart)
-        res.redirect('/');
     });
+
+    if (!req.session.cart){
+        productsController.getAllPosts(req, (posts) => {
+            res.render('home',{ 
+                item: posts,
+                products:null
+              });
+          });
+    }
+    else{
+        var cart = new Cart(req.session.cart);
+        productsController.getAllPosts(req, (posts) => {
+            res.render('home',{ 
+                item: posts,
+                products: cart.generateArray(),totalPrice: cart.totalPrice
+              });
+          });
+    }
+
+
 
 });
 

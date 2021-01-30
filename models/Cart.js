@@ -8,10 +8,10 @@ module.exports = function Cart(oldCart){
         if (!storedItem){
             storedItem = this.items[id] = {item:item, qty:0, price:0}
         }
-        storedItem.qty = storedItem.qty+parseInt(Quantity);
+        storedItem.qty = storedItem.qty+parseFloat(Quantity);
         storedItem.price = storedItem.item.productPrice * storedItem.qty;
         this.totalQty++;
-        this.totalPrice += parseFloat(storedItem.item.productPrice);
+        this.totalPrice += parseFloat(storedItem.item.productPrice)*storedItem.qty;
     }
 
     this.generateArray = function() {
