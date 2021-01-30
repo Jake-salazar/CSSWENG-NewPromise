@@ -159,9 +159,11 @@ router.get('/post/view/:id', (req, res) => {
 
 router.get('/post/view/addtocart/:id', (req, res) => {
     console.log("Read view successful!");
+    console.log("before adding cart");
+        console.log(req.params.id);
   
     productsController.getID(req, (post) => {
-        console.log("post items:");
+        
         console.log(post);
         res.render('addtocart', { 
           item: post 
@@ -169,12 +171,13 @@ router.get('/post/view/addtocart/:id', (req, res) => {
       });
 });
 
-router.get('/add-to-cart/:id',(req,res)=>{
-    console.log("add to cart ");
+router.post('/cart/added',(req,res)=>{
+
+ 
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
 
-    productsController.getID(req, (product) =>{
-        cart.add(product,product._id);
+    productsController.getByID(req, (product) =>{
+        cart.add(product,req.body.id,req.body.Quantity);
         req.session.cart =cart;
         console.log("addded!");
         console.log(req.session.cart)
