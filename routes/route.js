@@ -228,6 +228,7 @@ router.get('/delete/item/:id', (req, res) => {
     var cart = new Cart(req.session.cart);
     var id = req.params.id;
     cart.remove(id);
+    req.session.cart = cart;
     res.render('cart',{products: cart.generateArray(),totalPrice: cart.totalPrice});
 });
 
