@@ -1,5 +1,5 @@
 const productsModel = require('../models/Products');
-
+var Cart = require('../models/Cart');
 // Function that creates a Product // WORKING
 exports.create = function(req, res) {
   var folder = "assets/"+req.file.originalname;
@@ -109,4 +109,19 @@ exports.getByID = (req, res) => {
       res(postObject);
     }
   });
+};
+
+
+exports.saveChanges = (req,res) =>{
+  var id = req.body.id;
+  productsModel.getByID(id, (product) => {
+      var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+      cart.edit(product,req.body.id,req.body.Quantity);
+      req.session.cart =cart;
+      var cart = new Cart(req.session.cart);
+      res.render('cart',{products: cart.generateArray(),totalPrice: cart.totalPrice});
+  });
+ 
+
+
 };

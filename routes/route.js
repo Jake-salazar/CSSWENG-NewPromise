@@ -225,16 +225,9 @@ router.get('/edit/item/:id', (req, res) => {
 });
 
 
-router.post('/Edited/item',(req,res)=>{
-    console.log("IM HERE")
-    productsController.getByID(req, (product) =>{
-        cart.edit(product,req.body.id,req.body.Quantity);
-        req.session.cart =cart;        
-    });
-    var cart = new Cart(req.session.cart);
-    res.render('cart',{products: cart.generateArray(),totalPrice: cart.totalPrice});
-});
 
+
+router.post('/Edited/item', productsController.saveChanges);
 
 
 module.exports = router;

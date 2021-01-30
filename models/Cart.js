@@ -7,10 +7,10 @@ module.exports = function Cart(oldCart){
         var storedItem = this.items[id];
         if (!storedItem){
             storedItem = this.items[id] = {item:item, qty:0, price:0}
+            this.totalQty++;
         }
-        storedItem.qty = storedItem.qty+parseFloat(Quantity);
+        storedItem.qty = parseFloat(Quantity);
         storedItem.price = storedItem.item.productPrice * storedItem.qty;
-        this.totalQty++;
         this.totalPrice += parseFloat(storedItem.item.productPrice)*storedItem.qty;
     }
 
@@ -25,6 +25,7 @@ module.exports = function Cart(oldCart){
         storedItem.price = storedItem.item.productPrice * storedItem.qty;
         this.totalPrice += parseFloat(storedItem.item.productPrice)*storedItem.qty;
     }
+
 
     this.generateArray = function() {
         var arr = [];
