@@ -26,6 +26,12 @@ module.exports = function Cart(oldCart){
         this.totalPrice += parseFloat(storedItem.item.productPrice)*storedItem.qty;
     }
 
+    this.remove = function (id){
+        var storedItem = this.items[id];
+        this.totalPrice -= storedItem.price;
+        this.totalQty--;
+        delete this.items[id];
+    }
 
     this.generateArray = function() {
         var arr = [];

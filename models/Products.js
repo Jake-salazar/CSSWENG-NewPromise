@@ -56,3 +56,16 @@ exports.remove = function(query, next) {
       next(err, post);
     });
   };
+
+  exports.delete = (req, res) => {
+    var id = req.params.id;
+    
+    postModel.remove(id, (err, result) => {
+      if (err) {
+        throw err; 
+      } 
+      else {
+        res.redirect('/seecart');
+      }
+    }); 
+  };

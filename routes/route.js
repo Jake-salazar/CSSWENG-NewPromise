@@ -224,6 +224,13 @@ router.get('/edit/item/:id', (req, res) => {
       });
 });
 
+router.get('/delete/item/:id', (req, res) => {  
+    var cart = new Cart(req.session.cart);
+    var id = req.params.id;
+    cart.remove(id);
+    res.render('cart',{products: cart.generateArray(),totalPrice: cart.totalPrice});
+});
+
 
 
 
