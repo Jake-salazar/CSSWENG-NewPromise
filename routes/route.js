@@ -232,10 +232,7 @@ router.get('/delete/item/:id', (req, res) => {
     res.render('cart',{products: cart.generateArray(),totalPrice: cart.totalPrice});
 });
 
-
-
-
 router.post('/Edited/item', productsController.saveChanges);
-
+router.get('/stock/delete/:id', productsController.delete);
 
 module.exports = router;

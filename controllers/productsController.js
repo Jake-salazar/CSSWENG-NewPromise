@@ -48,27 +48,6 @@ exports.getAllProducts = function(req, res) {
     
 };
 
-
-
-
-
-
-//------------------------------------------------------------------------------
-// Function that deletes a Product from the database // FIXING!
-exports.delete = (req, res) => {
-  var id = req.params.id;
-  
-  productsModel.remove(id, (err, result) => {
-    if (err) {
-      throw err; 
-    } 
-    else {
-      console.log('Successful');
-    }
-  }); 
-};
-
-
 exports.getAllPosts = (param, callback) =>{
   productsModel.getAll(param, (err, posts) => {
     if (err) throw err;
@@ -124,4 +103,17 @@ exports.saveChanges = (req,res) =>{
  
 
 
+};
+
+exports.delete = (req, res) => {
+  var id = req.params.id;
+  
+  productsModel.remove(id, (err, result) => {
+    if (err) {
+      throw err; 
+    } 
+    else {
+      res.redirect('/admin');
+    }
+  }); 
 };

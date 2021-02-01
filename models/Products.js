@@ -38,10 +38,10 @@ exports.getAll = function(sort, next){
 
 // Function that deletes a product from the database // FIXING
 exports.remove = function(query, next) {
-    Products.findByIdAndRemove(query, function(err, product){
-      next(err, product);
-    });
-  };
+  Products.findByIdAndRemove(query, function(err, post){
+    next(err, post);
+  });
+};
 
   exports.getAll = (param, next) => {
     Products.find({}, (err, posts) => {
