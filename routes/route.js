@@ -61,7 +61,6 @@ router.get('/login',(req,res)=>{
 router.get('/admin',(req,res)=>{
     // create the res.render here
     productsController.getAllPosts(req, (posts) => {
-        console.log(posts)
         res.render('admin',{ 
             item: posts,
           });
@@ -234,5 +233,17 @@ router.get('/delete/item/:id', (req, res) => {
 
 router.post('/Edited/item', productsController.saveChanges);
 router.get('/stock/delete/:id', productsController.delete);
+router.get('/stock/edit/:id', (req, res) => {
+    productsController.getID(req, (post) => {
+        res.render('catalogue-details', { 
+          item: post, 
+        });
+      });
+});
+
+router.post('/post/edit',upload, productsController.edit);
+
+
+
 
 module.exports = router;

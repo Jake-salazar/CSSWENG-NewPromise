@@ -117,3 +117,41 @@ exports.delete = (req, res) => {
     }
   }); 
 };
+
+
+exports.edit = (req, res) => {
+  const { image1 , name, category, price , brand, quantity, 
+    description } = req.body;
+
+  var n = null;
+  var folder= "";
+
+  if(req.file != n){
+     folder = "assets/"+req.file.originalname;
+  }else{
+     folder = req.body.image1;
+  }
+
+  var update = {
+    $set: { 
+      img: folder,
+      productCategory: req.body.category,
+      productName: req.body.name,
+      productBrand: req.body.brand,
+      productDesc: req.body.description,
+      productPrice: req.body.price,
+      productQuantity: req.body.quantity,
+    } 
+  };
+
+  console.log(update)
+  console.log(req.body._id);
+ 
+  productsModel.update(req.body._id, update, (err, result) => {
+    if (err) {
+      res.redirect('/admin');
+    } else {
+      res.redirect('/admin');
+    }
+  });
+};

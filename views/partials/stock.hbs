@@ -5,7 +5,7 @@
               <h4>{{productName}} x {{productQuantity}}</h4>
               <p>₱ {{productPrice}}</p>
               <a href = "/stock/delete/{{this._id}}"class="cart" title="Delete"><i class="bx bx-trash"></i></a>
-              <a href="/catalogue-details" class="details-link" title="Edit"><i class="bx bx-pencil"></i></a>
+              <a href="/stock/edit/{{this._id}}" class="details-link" title="Edit"><i class="bx bx-pencil"></i></a>
             </div>
 </div>
 {{/each}}

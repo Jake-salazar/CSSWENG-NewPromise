@@ -57,7 +57,7 @@ exports.remove = function(query, next) {
     });
   };
 
-  exports.delete = (req, res) => {
+ /*  exports.delete = (req, res) => {
     var id = req.params.id;
     
     postModel.remove(id, (err, result) => {
@@ -68,4 +68,10 @@ exports.remove = function(query, next) {
         res.redirect('/seecart');
       }
     }); 
+  }; */
+
+  exports.update = function(id, update, next) {
+    Products.findOneAndUpdate({_id: id}, update, { new: true }, function(err, post) {
+      next(err, post);
+    })
   };

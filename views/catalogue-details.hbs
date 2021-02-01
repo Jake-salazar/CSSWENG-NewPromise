@@ -18,43 +18,45 @@
 
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
+      <form enctype="multipart/form-data" action="/post/edit" method="POST">
       <div class="container">
-        <h2 class="portfolio-title"><input type="text" value="Name of Product"></h2>
+        <h2 class="portfolio-title"><input name="name" type="text" value="{{item.productName}}"></h2>
         <div class="row">
+          <input name="image1" type="hidden" value="{{item.img}}">
+           <input name="_id" type="hidden" value="{{item._id}}">
 
           <div class="col-lg-8" data-aos="fade-right">
             <div class="owl-carousel portfolio-details-carousel">
-              <img src="./assets/products/boysenpaint.jpg" class="img-fluid" alt="">
-              <img src="./assets/products/morewoods.jpg" class="img-fluid" alt="">
-              <img src="./assets/products/spheroepoxy.jpg" class="img-fluid" alt="">
+             <img id="blah" class ="img-fluid" name="image" type="file" src="{{item.img}}" alt="your image" />
             </div>
           </div>
 
           <div class="col-lg-4 portfolio-info" data-aos="fade-left">
             <ul>
-              <li><strong>Category</strong>: <input type="text" value="Paints"></li>
-              <li><strong>Brand</strong>: <input type="text" value="Paints" style="margin-left:22px"></li>
-              <li><strong>Price</strong>: ₱<input type="text" value="500.00" style="margin-left:20px"></li>
-              <li><strong>Quantity</strong>: <input type="number" value="5"></li>
-              <li><strong>Description</strong>:</li>
+              <li><strong>Category</strong>: <input type="text" name ="category"value="{{item.productCategory}}"></li>
+              <li><strong>Brand</strong>: <input type="text" name="brand" value="{{item.productBrand}}" style="margin-left:22px"></li>
+              <li><strong>Price</strong>: ₱<input type="text" name="price" value="{{item.productPrice}}" style="margin-left:20px"></li>
+              <li><strong>Quantity</strong>: <input type="number" name="quantity" value="{{item.productQuantity}}"></li>
             </ul>
 
-            <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" style="width: 100%;" required></textarea>
+            <textarea id="Message" name="description" class="fcf-form-control" rows="6" maxlength="3000" style="width: 100%;" required>{{item.productDesc}}</textarea>
             <br>
             <ul>
               <li><strong>Replace Image</strong></li>
-              <li><input type="file" accept="image/*"></li>
+              <li><input type="file" name = "image" accept="image/*" ></li>
             </ul>
             <br>
             <div class="choicebutton">
-                <a href="">Save</a>
-                <b class="btn">Cancel</b>
+                <button type="submit">Save</button>
+                <a href ="/admin" class="btn">Cancel</a>
             </div>
           </div>
 
         </div>
 
       </div>
+      </form>
     </section><!-- End Portfolio Details Section -->
 
   </main><!-- End #main -->
+
