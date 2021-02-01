@@ -753,6 +753,11 @@ section {
   margin-bottom: 30px;
 }
 
+.portfolio .img-fluid{
+  width: 100%;
+  height: 300px;
+}
+
 .portfolio .portfolio-item .portfolio-info {
   opacity: 0;
   position: absolute;
