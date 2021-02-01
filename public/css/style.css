@@ -1661,6 +1661,16 @@ section {
   border-radius: 4px;
 }
 
+.choicebutton button {
+  display: inline-block;
+  background: #0acc03;
+  color: #fff;
+  padding: 6px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
 .newstock a {
   display: inline-block;
   background: #099404;
@@ -1688,7 +1698,10 @@ section {
 .choicebutton a:hover {
   background: #4fe215;
 }
-
+.choicebutton button:hover {
+  background: #4fe215;
+  cursor: pointer;
+}
 .newstock a:hover {
   background: #3fc20c;
 }
@@ -3098,4 +3111,22 @@ label.fcf-label {
 
 input[type="submit"].fcf-btn-block, input[type="reset"].fcf-btn-block, input[type="button"].fcf-btn-block {
     width: 100%;
+}
+
+.image-preview {
+  width: 100%;
+  min-height: 500px;
+  border: 2px solid #ddd;
+  margin-top: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.image-preview_image{
+  display: none;
+  width: 100%;
 }
