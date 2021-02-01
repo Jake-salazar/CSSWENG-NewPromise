@@ -125,6 +125,7 @@ router.get('/Reviews',(req,res)=>{
 
 const multer  = require('multer');
 const e = require('express');
+const session = require('express-session');
 const storage = multer.diskStorage({ 
   destination: './public/assets/',
   filename: function(req, file, cb){
@@ -148,8 +149,6 @@ router.get('/post/view/:id', (req, res) => {
     console.log("Read view successful!");
   
     productsController.getID(req, (post) => {
-        console.log("post items:");
-        console.log(post);
         res.render('products-details', { 
           item: post 
         });
@@ -157,52 +156,15 @@ router.get('/post/view/:id', (req, res) => {
 });
 
 router.get('/post/view/addtocart/:id', (req, res) => {
-    console.log("Read view successful!");
-    console.log("before adding cart");
-        console.log(req.params.id);
-  
+
     productsController.getID(req, (post) => {
-        
-        console.log(post);
         res.render('addtocart', { 
           item: post 
         });
       });
 });
 
-router.post('/cart/added',(req,res)=>{
 
- 
-    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
-
-    productsController.getByID(req, (product) =>{
-        cart.add(product,req.body.id,req.body.Quantity);
-        req.session.cart =cart;
-        console.log("addded!");
-        console.log(req.session.cart)
-    });
-
-    if (!req.session.cart){
-        productsController.getAllPosts(req, (posts) => {
-            res.render('home',{ 
-                item: posts,
-                products:null
-              });
-          });
-    }
-    else{
-        var cart = new Cart(req.session.cart);
-        productsController.getAllPosts(req, (posts) => {
-            res.render('home',{ 
-                item: posts,
-                products: cart.generateArray(),totalPrice: cart.totalPrice
-              });
-          });
-    }
-
-
-
-});
 
 router.get('/seecart',(req,res)=>{
     console.log('see cart opened!');
@@ -216,7 +178,6 @@ router.get('/seecart',(req,res)=>{
 
 router.get('/edit/item/:id', (req, res) => {  
     productsController.getID(req, (post) => {
-        console.log(post);
         res.render('item-details', { 
           item: post 
         });
@@ -232,6 +193,9 @@ router.get('/delete/item/:id', (req, res) => {
 });
 
 router.post('/Edited/item', productsController.saveChanges);
+router.post('/cart/added', productsController.addingItem);
+
+
 router.get('/stock/delete/:id', productsController.delete);
 router.get('/stock/edit/:id', (req, res) => {
     productsController.getID(req, (post) => {

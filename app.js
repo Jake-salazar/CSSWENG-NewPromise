@@ -8,6 +8,8 @@ const mongoose = require('./models/connection');
 const session = require('express-session');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo')(session);
+const Handlebars = require('handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 //TODO: DB connection here
 
@@ -19,6 +21,7 @@ app.engine('hbs', exphbs({
     extname: '.hbs',
     layoutsDir: path.join(__dirname, '/views/layouts'), 
     partialsDir: path.join(__dirname, '/views/partials'),
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
 }))
 app.set('view engine', 'hbs')
 

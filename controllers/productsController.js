@@ -90,20 +90,44 @@ exports.getByID = (req, res) => {
   });
 };
 
+exports.addingItem = (req,res,next) =>{
+  var id = req.body.id;
+  productsModel.getByID(id, (err,product) => {
+      var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+      cart.add(product,req.body.id,req.body.Quantity);
+      req.session.cart =cart;
+
+      productsModel.getAll(req, (err1, posts) => {
+        if (err1) throw err1;
+        
+        const postObjects = [];
+        posts.forEach(function(doc) {
+          postObjects.push(doc.toObject());
+        });
+        res.render('home',{ 
+          item: postObjects,
+          products: cart.generateArray(),totalPrice: cart.totalPrice
+        });
+      });
+  });
+};
+
+
 
 exports.saveChanges = (req,res) =>{
   var id = req.body.id;
-  productsModel.getByID(id, (product) => {
+  productsModel.getByID(id, (err,product) => {
       var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
       cart.edit(product,req.body.id,req.body.Quantity);
       req.session.cart =cart;
       var cart = new Cart(req.session.cart);
       res.render('cart',{products: cart.generateArray(),totalPrice: cart.totalPrice});
   });
- 
-
-
 };
+
+
+
+
 
 exports.delete = (req, res) => {
   var id = req.params.id;
