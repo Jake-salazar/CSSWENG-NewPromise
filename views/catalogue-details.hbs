@@ -19,7 +19,7 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        <h2 class="portfolio-title">This is an example of catalogue detail</h2>
+        <h2 class="portfolio-title"><input type="text" value="Name of Product"></h2>
         <div class="row">
 
           <div class="col-lg-8" data-aos="fade-right">
@@ -31,18 +31,21 @@
           </div>
 
           <div class="col-lg-4 portfolio-info" data-aos="fade-left">
-            <h3><input type="text" value="Name of Product"></h3>
             <ul>
               <li><strong>Category</strong>: <input type="text" value="Paints"></li>
-              <li><strong>Price</strong>: ₱ <input type="text" value="500.00"></li>
+              <li><strong>Brand</strong>: <input type="text" value="Paints" style="margin-left:22px"></li>
+              <li><strong>Price</strong>: ₱<input type="text" value="500.00" style="margin-left:20px"></li>
               <li><strong>Quantity</strong>: <input type="number" value="5"></li>
-              <li><strong>Something</strong>: <a href="#">www.example.com</a></li>
+              <li><strong>Description</strong>:</li>
             </ul>
 
-            <p>
-              Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-            </p>
-
+            <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" style="width: 100%;" required></textarea>
+            <br>
+            <ul>
+              <li><strong>Replace Image</strong></li>
+              <li><input type="file" accept="image/*"></li>
+            </ul>
+            <br>
             <div class="choicebutton">
                 <a href="">Save</a>
                 <b class="btn">Cancel</b>

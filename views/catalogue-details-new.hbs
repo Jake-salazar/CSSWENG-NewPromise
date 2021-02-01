@@ -6,10 +6,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Catalogue New Details</h2>
+          <h2>New Stock</h2>
           <ol>
             <li><a href="/">Home</a></li>
-            <li>Catalogue New Details</li>
+            <li>New Stock</li>
           </ol>
         </div>
 
@@ -19,44 +19,31 @@
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
       <div class="container">
-        <h2 class="portfolio-title">This is an example of new catalogue detail</h2>
-        <h2 class="portfolio-title">Upload upto three pictures</h2>
+        <h2 class="portfolio-title"><input type="text" value="Name of Product"></h2>
         <div class="row">
 
           <div class="col-lg-8" data-aos="fade-right">
+            <p>Upload a photo for the product</p>
             <div class="owl-carousel portfolio-details-carousel">
-               <form enctype="multipart/form-data" action="/addProducts" method="POST"   >
-                <input type="file"  accept="image/*" name="image" id="file">
-                <h3><input name = "name" type="text" value="Name of Product"></h3>
-            <ul>
-              <li><strong>Category</strong>: <input name ="Category" type="text" value="Paints"></li>
-              <li><strong>Brand</strong>: ₱ <input name ="Brand"  type="text" value=""></li>
-              <li><strong>Description</strong>: ₱ <input name ="Description"  type="text" value=""></li>
-              <li><strong>Price</strong>: ₱ <input name ="Price"  type="text" value=""></li>
-              <li><strong>Quantity</strong>: <input name ="Quantity"  type="number" value=""></li>
-              <li><strong>Something</strong>: <a href="#">www.example.com</a></li>
-            </ul>
-            <div class="choicebutton">
-               <button type="submit">Post</button>
-                <b class="btn">Cancel</b>
-            </div>
-              </form>
-                
-
-              
-
-    
+              <input type="file" accept="image/*">
             </div>
           </div>
 
           <div class="col-lg-4 portfolio-info" data-aos="fade-left">
-            
+            <ul>
+              <li><strong>Category</strong>: <input type="text"></li>
+              <li><strong>Brand</strong>: <input type="text" style="margin-left:22px"></li>
+              <li><strong>Price</strong>: ₱<input type="text" style="margin-left:20px"></li>
+              <li><strong>Quantity</strong>: <input type="number"></li>
+              <li><strong>Description</strong>:</li>
+            </ul>
 
-            <p>
-              Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-            </p>
-
-            
+            <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" style="width: 100%;" required></textarea>
+            <br>
+            <div class="choicebutton">
+                <a href="">Save</a>
+                <b class="btn">Cancel</b>
+            </div>
           </div>
 
         </div>
