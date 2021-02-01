@@ -28,13 +28,19 @@ router.get('/',(req,res)=>{
 
 
 router.get('/AboutUs',(req,res)=>{
-    // create the res.render here
-    res.render('about');
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    res.render('about',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice
+      });
 });
 
 router.get('/Checkout',(req,res)=>{
-    // create the res.render here
-    res.render('checkout');
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    res.render('checkout',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice
+      });
 });
 
 router.get('/feedback',(req,res)=>{
@@ -42,10 +48,15 @@ router.get('/feedback',(req,res)=>{
     res.render('feedback');
 });
 
-router.get('/ProductsPage',productsController.getAllProducts,(req,res)=>{
-    // create the res.render here
-    // res.render('products');
-    // later we are gonna put posts to the products hbs
+router.get('/ProductsPage',(req,res)=>{
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    productsController.getAllPosts(req, (posts) => {
+        res.render('products',{ 
+            item: posts,
+            products: cart.generateArray(),totalPrice: cart.totalPrice
+          });
+      });
 });
 
 /* router.get('/products-details',(req,res)=>{
@@ -107,20 +118,29 @@ router.get('/addtocart',(req,res)=>{
     res.render('addtocart');
 });
 
-router.get('/item-details',(req,res)=>{
-    // create the res.render here
-    res.render('item-details');
+router.get('/item-details/:id',(req,res)=>{
+    productsController.getID(req, (post) => {
+        res.render('item-details', { 
+          item: post 
+        });
+      });
 });
 
 
 router.get('/FAQ',(req,res)=>{
-    // create the res.render here
-    res.render('FAQ');
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    res.render('FAQ',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice
+      });
 });
 
 router.get('/Reviews',(req,res)=>{
-    // create the res.render here
-    res.render('reviews');
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    res.render('reviews',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice
+      });
 });
 
 const multer  = require('multer');
