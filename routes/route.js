@@ -2,6 +2,9 @@ const express = require('express');
 const productsController = require('../controllers/productsController'); //connection to the controllers and database
 const ordersController = require('../controllers/ordersController'); // connection to order controller
 const reviewsController = require('../controllers/reviewsController');
+const userController = require('../controllers/userController');
+const loginValidation = require('../validators.js');
+const { loggedIn, loggedOut,loginAdmin } = require('../middlewares/checkAuth');
 const router = express.Router();
 var Cart = require('../models/Cart');
 
@@ -26,6 +29,12 @@ router.get('/',(req,res)=>{
     }
    
 });
+
+router.get('/logout', loggedIn, userController.logoutUser);
+router.get('/login',loggedOut,(req,res)=>{
+    res.render('login');
+});
+router.post('/loginAdmin', loggedOut, loginValidation, userController.loginUser);
 
 
 
@@ -70,17 +79,8 @@ router.get('/ProductsPage',(req,res)=>{
       });
 });
 
-/* router.get('/products-details',(req,res)=>{
-    // create the res.render here
-    res.render('products-details');
-}); */
 
-router.get('/login',(req,res)=>{
-    // create the res.render here
-    res.render('login');
-});
-
-router.get('/admin',(req,res)=>{
+router.get('/admin',loggedIn,(req,res)=>{
     ordersController.getAllOrders(req,(orders)=>{
         if(orders.length == 0){
             orders = null
@@ -96,16 +96,16 @@ router.get('/admin',(req,res)=>{
 });
 
 
-router.get('/delete-pending/review/:id',reviewsController.deletePending);
-router.get('/delete-public/review/:id',reviewsController.deletePublic);
-router.get('/adminreviews-public',(req,res)=>{
+router.get('/delete-pending/review/:id',loggedIn,reviewsController.deletePending);
+router.get('/delete-public/review/:id',loggedIn, reviewsController.deletePublic);
+router.get('/adminreviews-public',loggedIn,(req,res)=>{
     reviewsController.searchVisible(req, (reviews) => {
         res.render('adminreviews-public',{ 
             items: reviews
           });
       });
 });
-router.get('/adminreviews-pending',(req,res)=>{
+router.get('/adminreviews-pending',loggedIn,(req,res)=>{
     reviewsController.search(req, (reviews) => {
         res.render('adminreviews-pending',{
             item:reviews
@@ -113,14 +113,14 @@ router.get('/adminreviews-pending',(req,res)=>{
       });
 });
 
-router.get('/setVisible/:id',reviewsController.setVisible,(req,res)=>{
+router.get('/setVisible/:id',loggedIn,reviewsController.setVisible,(req,res)=>{
     reviewsController.search(req, (reviews) => {
         res.render('adminreviews-pending',{
             item:reviews
         });
       });
 });
-router.get('/setHide/:id',reviewsController.setHide,(req,res)=>{   
+router.get('/setHide/:id',loggedIn,reviewsController.setHide,(req,res)=>{   
     reviewsController.searchVisible(req, (reviews) => {
         res.render('adminreviews-public',{ 
             items: reviews
@@ -128,7 +128,7 @@ router.get('/setHide/:id',reviewsController.setHide,(req,res)=>{
       }); 
 });
 
-router.get('/admincatalogue',(req,res)=>{
+router.get('/admincatalogue',loggedIn,(req,res)=>{
     // create the res.render here
     productsController.getAllPosts(req, (posts) => {
         res.render('admincatalogue',{
@@ -152,7 +152,7 @@ router.get('/orderdetails-view',(req,res)=>{
     res.render('orderdetails-view');
 });
 
-router.get('/adminorders',(req,res)=>{
+router.get('/adminorders',loggedIn,(req,res)=>{
     ordersController.getAllOrders(req,(orders)=>{
         res.render('adminorders',{
             item:orders
@@ -171,8 +171,8 @@ router.get('/orderdetails/:id',(req,res)=>{
 });
 
 
-router.get('/order/delete/:id', ordersController.delete);
-router.get('/order/delete-adminorders/:id', ordersController.deleteAdminOrder);
+router.get('/order/delete/:id', loggedIn,ordersController.delete);
+router.get('/order/delete-adminorders/:id',loggedIn, ordersController.deleteAdminOrder);
 
 
 router.get('/cart',(req,res)=>{
@@ -229,8 +229,8 @@ const upload = multer({
 }).single('image');
 
 
-router.post('/addProducts',upload, productsController.create); // WORKING
-router.post('/products/delete/:id',productsController.delete); // FIXING
+router.post('/addProducts',loggedIn,upload, productsController.create); // WORKING
+router.post('/products/delete/:id',loggedIn,productsController.delete); // FIXING
 
 // router.post('/',(req,res)=>{
 //     // create the res.render here
@@ -288,9 +288,9 @@ router.post('/Edited/item', productsController.saveChanges);
 router.post('/cart/added', productsController.addingItem);
 
 
-router.get('/stock/delete/:id', productsController.delete);
+router.get('/stock/delete/:id', loggedIn,productsController.delete);
 
-router.get('/stock/edit/:id', (req, res) => {
+router.get('/stock/edit/:id',loggedIn, (req, res) => {
     productsController.getID(req, (post) => {
         res.render('catalogue-details', { 
           item: post, 
@@ -314,6 +314,6 @@ router.post("/Checkout/placeOrder", ordersController.creatingOrder, (req,res)=>{
 });
 
 
-router.post('/Edit/Status', ordersController.edit);
+router.post('/Edit/Status',loggedIn, ordersController.edit);
 
 module.exports = router;
