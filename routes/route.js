@@ -91,18 +91,25 @@ router.get('/ProductsPage',(req,res)=>{
 
 
 router.get('/admin',loggedIn,(req,res)=>{
-    ordersController.getAllOrders(req,(orders)=>{
-        if(orders.length == 0){
-            orders = null
-        }
-        console.log(orders)
-        productsController.getAllPosts(req, (posts) => {
-            res.render('admin',{ 
-                item: posts,
-                orderItem: orders
+
+    reviewsController.searchVisible(req, (reviews) => {
+        console.log("reviews")
+        console.log(reviews);
+        ordersController.getAllOrders(req,(orders)=>{
+            if(orders.length == 0){
+                orders = null
+            }
+            console.log(orders)
+            productsController.getAllPosts(req, (posts) => {
+                res.render('admin',{ 
+                    item: posts,
+                    orderItem: orders,
+                    publicReview: reviews
+                  });
               });
-          });
-    });
+        });
+        
+      });
 });
 
 
