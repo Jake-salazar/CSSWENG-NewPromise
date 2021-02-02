@@ -96,11 +96,13 @@ router.get('/admin',(req,res)=>{
 });
 
 
+router.get('/delete-pending/review/:id',reviewsController.deletePending);
+router.get('/delete-public/review/:id',reviewsController.deletePublic);
 router.get('/adminreviews-public',(req,res)=>{
-    reviewsController.search(req, (reviews) => {
-        res.render('adminreviews-public',{
-            item:reviews
-        });
+    reviewsController.searchVisible(req, (reviews) => {
+        res.render('adminreviews-public',{ 
+            items: reviews
+          });
       });
 });
 router.get('/adminreviews-pending',(req,res)=>{
@@ -110,10 +112,20 @@ router.get('/adminreviews-pending',(req,res)=>{
         });
       });
 });
-router.get('/setVisible/:id',reviewsController.setVisible,(req,res)=>{
-});
 
-router.get('/setHide/:id',reviewsController.setHide,(req,res)=>{    
+router.get('/setVisible/:id',reviewsController.setVisible,(req,res)=>{
+    reviewsController.search(req, (reviews) => {
+        res.render('adminreviews-pending',{
+            item:reviews
+        });
+      });
+});
+router.get('/setHide/:id',reviewsController.setHide,(req,res)=>{   
+    reviewsController.searchVisible(req, (reviews) => {
+        res.render('adminreviews-public',{ 
+            items: reviews
+          });
+      }); 
 });
 
 router.get('/admincatalogue',(req,res)=>{

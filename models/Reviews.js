@@ -60,3 +60,9 @@ exports.createReview = function(obj, next) {
       next(err, post);
     })
   };
+
+  exports.remove = function(query, next) {
+    Reviews.findByIdAndRemove(query, function(err, post){
+      next(err, post);
+    });
+  };

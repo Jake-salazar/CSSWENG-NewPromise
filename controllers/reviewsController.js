@@ -86,26 +86,51 @@ exports.setVisible = (req, res) => {
   };
   reviewsModel.update(id, update, (err, result) => {
     if (err) {
-      res.redirect('/adminreviews');
+      res.redirect('/adminreviews-pending');
     } else {
-      res.redirect('/adminreviews');
+      res.redirect('/adminreviews-pending');
     }
   });
 };
 
-exports.setHide = (req, res) => {  
+exports.setHide = (req, res) => { 
+  console.log("inside set hide"); 
   var id = req.params.id;
   var update = {
     $set: { 
-      shown:true
+      shown:false
     } 
   };
   reviewsModel.update(id, update, (err, result) => {
     if (err) {
-      res.redirect('/adminreviews');
+      res.redirect('/adminreviews-public');
     } else {
-      res.redirect('/adminreviews');
+      res.redirect('/adminreviews-public');
     }
   });
+};
+
+exports.deletePending = (req, res) => {
+  var id = req.params.id;
+  reviewsModel.remove(id, (err, result) => {
+    if (err) {
+      throw err; 
+    } 
+    else {
+      res.redirect('/adminreviews-pending');
+    }
+  }); 
+};
+
+exports.deletePublic = (req, res) => {
+  var id = req.params.id;
+  reviewsModel.remove(id, (err, result) => {
+    if (err) {
+      throw err; 
+    } 
+    else {
+      res.redirect('/adminreviews-public');
+    }
+  }); 
 };
 
