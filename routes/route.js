@@ -49,7 +49,15 @@ router.get('/feedback',(req,res)=>{
     res.render('feedback');
 });
 
-router.post('/post/feedback/', reviewsController.creatingReview);
+router.post('/post/feedback/', reviewsController.creatingReview, (req,res)=>{
+    var review = res.locals.review;
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    res.render('feedbackconfirm',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice,
+        name: review.fullName
+      });
+});
 
 router.get('/ProductsPage',(req,res)=>{
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
@@ -89,11 +97,17 @@ router.get('/admin',(req,res)=>{
 
 
 router.get('/adminreviews',(req,res)=>{
-    reviewsController.getAllReviews(req, (reviews) => {
+    reviewsController.search(req, (reviews) => {
         res.render('adminreviews',{
             item:reviews
         });
       });
+});
+
+router.get('/setVisible/:id',reviewsController.setVisible,(req,res)=>{
+});
+
+router.get('/setHide/:id',reviewsController.setHide,(req,res)=>{    
 });
 
 router.get('/admincatalogue',(req,res)=>{
@@ -113,14 +127,6 @@ router.get('/catalogue-details',(req,res)=>{
 router.get('/catalogue-details-new',(req,res)=>{
     // create the res.render here
     res.render('catalogue-details-new');
-});
-
-router.get('/feedbackconfirm',(req,res)=>{
-    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
-    req.session.cart =cart;
-    res.render('feedbackconfirm',{ 
-        products: cart.generateArray(),totalPrice: cart.totalPrice
-      });
 });
 
 router.get('/orderdetails-view',(req,res)=>{
@@ -146,15 +152,6 @@ router.get('/orderdetails/:id',(req,res)=>{
     });
 });
 
-router.get('/orderdetails/:id',(req,res)=>{
-    ordersController.getID(req,(order)=>{
-        console.log("orderss:")
-        console.log(order)
-        res.render('orderdetails',{ 
-            orderItem: order
-          });
-    });
-});
 
 router.get('/order/delete/:id', ordersController.delete);
 router.get('/order/delete-adminorders/:id', ordersController.deleteAdminOrder);
@@ -191,8 +188,11 @@ router.get('/FAQ',(req,res)=>{
 router.get('/Reviews',(req,res)=>{
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
     req.session.cart =cart;
-    res.render('reviews',{ 
-        products: cart.generateArray(),totalPrice: cart.totalPrice
+    reviewsController.searchVisible(req, (reviews) => {
+        res.render('reviews',{ 
+            products: cart.generateArray(),totalPrice: cart.totalPrice,
+            items: reviews
+          });
       });
 });
 

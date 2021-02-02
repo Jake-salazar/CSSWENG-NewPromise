@@ -3,7 +3,8 @@ const mongoose = require('./Connection');
 const reviewschema = mongoose.Schema({
     fullName: {type:String,required: true},
     email: {type: String ,required:true},
-    review: {type:String, required:true}
+    review: {type:String, required:true},
+    shown: {type:Boolean, required: true}
 },{
     timestamps: true
 }
@@ -40,4 +41,22 @@ exports.createReview = function(obj, next) {
     Reviews.findById(query, function(err, post) {
       next(err, post);
     });
+  };
+
+  exports.getShown = function(shown, next) {
+    Reviews.find({ shown: {$eq:false}}, function(err, reviews) {
+      next(err, reviews);
+    });
+  };
+
+  exports.getShownVisible = function(shown, next) {
+    Reviews.find({ shown: {$eq:true}}, function(err, reviews) {
+      next(err, reviews);
+    });
+  };
+
+  exports.update = function(id, update, next) {
+    Reviews.findOneAndUpdate({_id: id}, update, { new: true }, function(err, post) {
+      next(err, post);
+    })
   };
