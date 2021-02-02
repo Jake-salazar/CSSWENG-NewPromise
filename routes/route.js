@@ -1,5 +1,6 @@
 const express = require('express');
 const productsController = require('../controllers/productsController'); //connection to the controllers and database
+const ordersController = require('../controllers/ordersController'); // connection to order controller
 const router = express.Router();
 var Cart = require('../models/Cart');
 
@@ -36,7 +37,6 @@ router.get('/AboutUs',(req,res)=>{
 });
 
 router.get('/Checkout',(req,res)=>{
-    console.log("here at checkout!")
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
     req.session.cart =cart;
     res.render('checkout',{ 
@@ -72,11 +72,17 @@ router.get('/login',(req,res)=>{
 
 router.get('/admin',(req,res)=>{
     // create the res.render here
-    productsController.getAllPosts(req, (posts) => {
-        res.render('admin',{ 
-            item: posts,
+    console.log("adminsss")
+    ordersController.getAllOrders(req,(orders)=>{
+        console.log("orders")
+        console.log(orders)
+        productsController.getAllPosts(req, (posts) => {
+            res.render('admin',{ 
+                item: posts,
+                orderItem: orders
+              });
           });
-      });
+    });
 });
 
 router.get('/adminreviews',(req,res)=>{
@@ -228,6 +234,9 @@ router.get('/stock/edit/:id', (req, res) => {
 
 router.post('/post/edit',upload, productsController.edit);
 
-
+router.post("/Checkout/placeOrder", ordersController.creatingOrder, (req,res)=>{
+    console.log("session cart:");
+    console.log(req.session.cart);
+});
 
 module.exports = router;

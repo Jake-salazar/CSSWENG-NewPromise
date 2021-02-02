@@ -1,0 +1,18 @@
+  {{#each orderItem}}
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="testimonial-item">
+              <img src="./assets/neworder.png" class="testimonial-img" alt="">
+              <h3>{{lastName}},{{firstName}},{{middleInitial}}</h3>
+              <h4>{{createdAt}}</h4>
+              <p>
+                  Total of {{cart.totalQty}} items:{{cart.items}}
+              </p>
+              <br>
+              <div class="choicebutton">
+                <a class="viewbtn" href="orderdetails">View</a>
+                <b class="btn">Delete</b>
+              </div>
+            </div>
+            
+          </div>
+{{/each}}
