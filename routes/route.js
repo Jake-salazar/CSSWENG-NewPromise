@@ -71,10 +71,10 @@ router.get('/login',(req,res)=>{
 });
 
 router.get('/admin',(req,res)=>{
-    // create the res.render here
-    console.log("adminsss")
     ordersController.getAllOrders(req,(orders)=>{
-        console.log("orders")
+        if(orders.length == 0){
+            orders = null
+        }
         console.log(orders)
         productsController.getAllPosts(req, (posts) => {
             res.render('admin',{ 
@@ -84,6 +84,7 @@ router.get('/admin',(req,res)=>{
           });
     });
 });
+
 
 router.get('/adminreviews',(req,res)=>{
     // create the res.render here
@@ -106,14 +107,36 @@ router.get('/catalogue-details-new',(req,res)=>{
 });
 
 router.get('/adminorders',(req,res)=>{
-    // create the res.render here
-    res.render('adminorders');
+    ordersController.getAllOrders(req,(orders)=>{
+        res.render('adminorders',{
+            item:orders
+        });
+    });
 });
 
-router.get('/orderdetails',(req,res)=>{
-    // create the res.render here
-    res.render('orderdetails');
+router.get('/orderdetails/:id',(req,res)=>{
+    ordersController.getID(req,(order)=>{
+        console.log("orderss:")
+        console.log(order)
+        res.render('orderdetails',{ 
+            orderItem: order
+          });
+    });
 });
+
+router.get('/orderdetails/:id',(req,res)=>{
+    ordersController.getID(req,(order)=>{
+        console.log("orderss:")
+        console.log(order)
+        res.render('orderdetails',{ 
+            orderItem: order
+          });
+    });
+});
+
+router.get('/order/delete/:id', ordersController.delete);
+
+
 
 router.get('/cart',(req,res)=>{
     // create the res.render here
@@ -224,6 +247,7 @@ router.post('/cart/added', productsController.addingItem);
 
 
 router.get('/stock/delete/:id', productsController.delete);
+
 router.get('/stock/edit/:id', (req, res) => {
     productsController.getID(req, (post) => {
         res.render('catalogue-details', { 
@@ -235,8 +259,6 @@ router.get('/stock/edit/:id', (req, res) => {
 router.post('/post/edit',upload, productsController.edit);
 
 router.post("/Checkout/placeOrder", ordersController.creatingOrder, (req,res)=>{
-    console.log("session cart:");
-    console.log(req.session.cart);
 });
 
 module.exports = router;

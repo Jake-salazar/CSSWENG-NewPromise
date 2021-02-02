@@ -27,7 +27,11 @@
         
          <br>
         <div class="row">
+           {{#if orderItem}} 
             {{>order}}
+              {{else}}
+                     <h2>No Orders Yet!</h2>
+              {{/if}}
         </div>
       </div>
     </section><!-- End Testimonials Section -->

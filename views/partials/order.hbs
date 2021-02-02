@@ -5,12 +5,12 @@
               <h3>{{lastName}},{{firstName}},{{middleInitial}}</h3>
               <h4>{{createdAt}}</h4>
               <p>
-                  Total of {{cart.totalQty}} items:{{cart.items}}
+                  Total of {{cart.totalQty}} items: {{#each cart.items }}  {{item.productName}},  {{/each}}
               </p>
               <br>
               <div class="choicebutton">
-                <a class="viewbtn" href="orderdetails">View</a>
-                <b class="btn">Delete</b>
+                <a class="viewbtn" href="/orderdetails/{{this._id}}">View</a>
+                <a href ="/order/delete/{{this._id}}" class="btn">Delete</a>
               </div>
             </div>
             

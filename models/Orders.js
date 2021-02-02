@@ -17,6 +17,7 @@ const orderschema = mongoose.Schema({
     facebookName: { type: String, required: true},
     contactNumber: {type: Number, required: true},
     address: {type:String, required: true},  
+    status: {type:String,required:true}
 },{
     timestamps: true
 }
@@ -35,5 +36,17 @@ exports.createOrder = function(obj, next) {
   exports.getAll = (param, next) => {
     Orders.find({}, (err, posts) => {
       next(err, posts);
+    });
+  };
+
+  exports.getByID = function(query, next) {
+    Orders.findById(query, function(err, post) {
+      next(err, post);
+    });
+  };
+
+  exports.remove = function(query, next) {
+    Orders.findByIdAndRemove(query, function(err, post){
+      next(err, post);
     });
   };

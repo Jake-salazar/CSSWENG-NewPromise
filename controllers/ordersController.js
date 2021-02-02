@@ -10,7 +10,8 @@ exports.creatingOrder = function(req, res) {
         emailAddress: req.body.Email,
         facebookName: req.body.facebook,
         contactNumber: req.body.contact,
-        address: req.body.address
+        address: req.body.address,
+        status: "Pending"
       };
 
       ordersModel.createOrder(order, function(err, product){
@@ -44,4 +45,27 @@ exports.getAllOrders = (param, callback) =>{
   };
 
 
+  exports.getID = (req, res) => {
+    var id = req.params.id;
+    ordersModel.getByID(id, (err, result) => {
+      if (err) {
+        throw err;
+      } else {
+        var postObject = result.toObject();
+        res(postObject);
+      }
+    });
+  };
 
+  exports.delete = (req, res) => {
+    var id = req.params.id;
+    
+    ordersModel.remove(id, (err, result) => {
+      if (err) {
+        throw err; 
+      } 
+      else {
+        res.redirect('/admin');
+      }
+    }); 
+  };
