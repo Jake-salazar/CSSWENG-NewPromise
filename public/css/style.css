@@ -1691,6 +1691,16 @@ section {
   border-radius: 4px;
 }
 
+.choicebutton .btndelete {
+  display: inline-block;
+  background: #d60303;
+  color: #fff;
+  padding: 6px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
 .blog .entry .entry-content .read-more a:hover {
   background: #fd541e;
 }
@@ -1707,6 +1717,10 @@ section {
 }
 
 .choicebutton b:hover {
+  background: #dd3f3f;
+}
+
+.choicebutton .btndelete:hover {
   background: #dd3f3f;
 }
 
