@@ -57,21 +57,15 @@ exports.remove = function(query, next) {
     });
   };
 
- /*  exports.delete = (req, res) => {
-    var id = req.params.id;
-    
-    postModel.remove(id, (err, result) => {
-      if (err) {
-        throw err; 
-      } 
-      else {
-        res.redirect('/seecart');
-      }
-    }); 
-  }; */
-
   exports.update = function(id, update, next) {
     Products.findOneAndUpdate({_id: id}, update, { new: true }, function(err, post) {
       next(err, post);
     })
+  };
+
+  exports.getName = function(productName, productBrand, next) {
+    Products.find({ $or: [ productName, productBrand ]}, function(err, posts) {
+      next(err, posts);
+      console.log(err);
+    });
   };

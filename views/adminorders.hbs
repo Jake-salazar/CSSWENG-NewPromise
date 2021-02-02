@@ -44,7 +44,7 @@
                     <th><i class="icon_cogs"></i>ACTIONS</th>
                   </tr>
                     {{#each item}}
-                  <tr onclick="window.location='orderdetails';" style="cursor: pointer;">
+                  <tr onclick="window.location='/orderdetails-view;' style="cursor: pointer;">
                     <td>{{createdAt}}</td>
                     <td><a id="change" href="#" style="color: rgb(50, 192, 50);" onclick="changecolor()">{{status}}</a></td>
                     <td>{{cart.totalQty}}</td>

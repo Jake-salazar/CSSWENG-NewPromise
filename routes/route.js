@@ -68,6 +68,16 @@ router.post('/post/feedback/', reviewsController.creatingReview, (req,res)=>{
       });
 });
 
+router.post('/products/search', productsController.searchProduct, (req, res) => {
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    var posts = res.locals.postObject;
+        res.render('products',{ 
+            item: posts,
+            products: cart.generateArray(),totalPrice: cart.totalPrice
+          });
+});
+
 router.get('/ProductsPage',(req,res)=>{
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
     req.session.cart =cart;
@@ -149,6 +159,7 @@ router.get('/catalogue-details-new',(req,res)=>{
 
 router.get('/orderdetails-view',(req,res)=>{
     // create the res.render here
+    console.log("hello im at order details")
     res.render('orderdetails-view');
 });
 

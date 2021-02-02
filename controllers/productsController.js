@@ -179,3 +179,29 @@ exports.edit = (req, res) => {
     }
   });
 };
+
+exports.searchProduct = (req, res,next) => {
+  var query = req.body.searchTitle;
+  
+  productsModel.getName({ productName: {$regex: query, $options:'i'}}, { productBrand: {$regex: query, $options:'i'}}, (err, result) => {
+    if (err) {
+      req.flash('error_msg', 'Something happened! Please try again.');
+      throw err; 
+    } 
+    else {
+      if (result) { 
+        const postObjects = [];
+    
+        result.forEach(function(doc) {
+          postObjects.push(doc.toObject());
+        });
+        res.locals.postObject = postObjects;
+        next();
+      } 
+      else { 
+        console.log("No post found!");
+        req.flash('error_msg', 'No search results found. Try again.');
+      }
+    }
+  });
+};
