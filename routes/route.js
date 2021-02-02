@@ -139,7 +139,7 @@ router.get('/setHide/:id',loggedIn,reviewsController.setHide,(req,res)=>{
 });
 
 
-router.post('/catalogue/search', productsController.searchProduct, (req, res) => {
+router.post('/catalogue/search', loggedIn,productsController.searchProduct, (req, res) => {
     var posts = res.locals.postObject;
         res.render('admincatalogue',{ 
             item: posts,
