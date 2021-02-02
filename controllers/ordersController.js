@@ -1,8 +1,8 @@
 const ordersModel = require('../models/Orders');
 var Cart = require('../models/Cart');
 
-exports.creatingOrder = function(req, res) {
-    var order = {
+exports.creatingOrder = function(req, res,next) {  
+  var order = {
         cart: req.session.cart,
         firstName: req.body.firstname,
         lastName: req.body.lastname,
@@ -11,12 +11,11 @@ exports.creatingOrder = function(req, res) {
         facebookName: req.body.facebook,
         contactNumber: req.body.contact,
         address: req.body.address,
-        status: "Pending"
+        status: "Pending",
       };
 
       ordersModel.createOrder(order, function(err, product){
-        console.log("product of createorder")  
-        console.log(product)
+        res.locals.order = order;
         var result;
             if (err) {
               console.log(err.errors);
@@ -25,8 +24,7 @@ exports.creatingOrder = function(req, res) {
             } else {
               console.log("Successfully added product!");      
               result = { success: true, message: "Order created!"  }
-              req.session.cart = null;
-              res.redirect("/");
+              next();
             }
     });
 };

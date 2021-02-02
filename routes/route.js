@@ -162,13 +162,7 @@ router.get('/item-details/:id',(req,res)=>{
       });
 });
 
-router.get('/receipt',(req,res)=>{
-    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
-    req.session.cart =cart;
-    res.render('receipt',{ 
-        products: cart.generateArray(),totalPrice: cart.totalPrice
-      });
-});
+
 
 router.get('/FAQ',(req,res)=>{
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
@@ -273,7 +267,16 @@ router.get('/stock/edit/:id', (req, res) => {
 router.post('/post/edit',upload, productsController.edit);
 
 router.post("/Checkout/placeOrder", ordersController.creatingOrder, (req,res)=>{
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    req.session.cart = null;
+    var today = new Date();
+    var order = res.locals.order 
+    res.render('receipt',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice,
+        orderDetails: order,
+        date: today
+      });
 });
-
 
 module.exports = router;
