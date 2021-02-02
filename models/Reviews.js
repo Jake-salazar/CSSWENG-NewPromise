@@ -35,3 +35,9 @@ exports.createReview = function(obj, next) {
       next(err, review);
     });
   };
+  
+  exports.getByID = function(query, next) {
+    Reviews.findById(query, function(err, post) {
+      next(err, post);
+    });
+  };

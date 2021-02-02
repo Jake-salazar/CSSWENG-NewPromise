@@ -89,8 +89,11 @@ router.get('/admin',(req,res)=>{
 
 
 router.get('/adminreviews',(req,res)=>{
-    // create the res.render here
-    res.render('adminreviews');
+    reviewsController.getAllReviews(req, (reviews) => {
+        res.render('adminreviews',{
+            item:reviews
+        });
+      });
 });
 
 router.get('/admincatalogue',(req,res)=>{

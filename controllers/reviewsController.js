@@ -18,7 +18,32 @@ exports.creatingReview = function(req, res) {
             } else {
               console.log("Successfully added product!");      
               result = { success: true, message: "Review created!"  }
-              res.send(result);
             }
     });
+};
+
+exports.getIdReview = (req, res) => {
+  var id = req.params.id;
+  reviewsModel.getByID(id, (err, result) => {
+    if (err) {
+      throw err;
+    } else {
+      var postObject = result.toObject();
+      res(postObject);
+    }
+  });
+};
+
+
+exports.getAllReviews = (param, callback) =>{
+  reviewsModel.getAll(param, (err, review) => {
+    if (err) throw err;
+
+    const reviewsObject = [];
+    
+    review.forEach(function(doc) {
+      reviewsObject.push(doc.toObject());
+    });
+    callback(reviewsObject);
+  });
 };
