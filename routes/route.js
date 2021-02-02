@@ -115,6 +115,19 @@ router.get('/catalogue-details-new',(req,res)=>{
     res.render('catalogue-details-new');
 });
 
+router.get('/feedbackconfirm',(req,res)=>{
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    res.render('feedbackconfirm',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice
+      });
+});
+
+router.get('/orderdetails-view',(req,res)=>{
+    // create the res.render here
+    res.render('orderdetails-view');
+});
+
 router.get('/adminorders',(req,res)=>{
     ordersController.getAllOrders(req,(orders)=>{
         res.render('adminorders',{
