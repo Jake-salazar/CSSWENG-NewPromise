@@ -160,6 +160,13 @@ router.get('/item-details/:id',(req,res)=>{
       });
 });
 
+router.get('/receipt',(req,res)=>{
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    res.render('receipt',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice
+      });
+});
 
 router.get('/FAQ',(req,res)=>{
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
