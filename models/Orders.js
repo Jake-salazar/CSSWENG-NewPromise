@@ -51,3 +51,11 @@ exports.createOrder = function(obj, next) {
       next(err, post);
     })
   };
+
+  
+  exports.getInfo = function(lastName, firstName, emailAddress,facebookName,address,status,delivery_date,next) {
+    Products.find({ $or: [ lastName, firstName, emailAddress,facebookName,address,status,delivery_date,]}, function(err, posts) {
+      next(err, posts);
+      console.log(err);
+    });
+  };

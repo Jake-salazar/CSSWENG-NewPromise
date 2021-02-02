@@ -163,6 +163,13 @@ router.get('/orderdetails-view',(req,res)=>{
     res.render('orderdetails-view');
 });
 
+router.post('/search/order', ordersController.searchOrder, (req, res) => {
+    var orders = res.locals.postObject;
+        res.render('adminorders',{ 
+            item: orders,
+          });
+});
+
 router.get('/adminorders',loggedIn,(req,res)=>{
     ordersController.getAllOrders(req,(orders)=>{
         res.render('adminorders',{
