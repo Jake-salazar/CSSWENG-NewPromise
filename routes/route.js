@@ -138,6 +138,14 @@ router.get('/setHide/:id',loggedIn,reviewsController.setHide,(req,res)=>{
       }); 
 });
 
+
+router.post('/catalogue/search', productsController.searchProduct, (req, res) => {
+    var posts = res.locals.postObject;
+        res.render('admincatalogue',{ 
+            item: posts,
+          });
+});
+
 router.get('/admincatalogue',loggedIn,(req,res)=>{
     // create the res.render here
     productsController.getAllPosts(req, (posts) => {
@@ -163,7 +171,7 @@ router.get('/orderdetails-view',(req,res)=>{
     res.render('orderdetails-view');
 });
 
-router.post('/search/order', ordersController.searchOrder, (req, res) => {
+router.post('/search/order',loggedIn, ordersController.searchOrder, (req, res) => {
     var orders = res.locals.postObject;
         res.render('adminorders',{ 
             item: orders,
