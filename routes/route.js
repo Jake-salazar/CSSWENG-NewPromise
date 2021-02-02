@@ -93,7 +93,11 @@ router.get('/adminreviews',(req,res)=>{
 
 router.get('/admincatalogue',(req,res)=>{
     // create the res.render here
-    res.render('admincatalogue');
+    productsController.getAllPosts(req, (posts) => {
+        res.render('admincatalogue',{
+            item:posts
+        });
+      });
 });
 
 router.get('/catalogue-details',(req,res)=>{
@@ -261,5 +265,6 @@ router.post('/post/edit',upload, productsController.edit);
 
 router.post("/Checkout/placeOrder", ordersController.creatingOrder, (req,res)=>{
 });
+
 
 module.exports = router;
