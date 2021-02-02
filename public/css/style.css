@@ -1661,6 +1661,16 @@ section {
   border-radius: 4px;
 }
 
+.choicebutton c {
+  display: inline-block;
+  background: #f0cd08;
+  color: #fff;
+  padding: 6px 20px;
+  transition: 0.3s;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
 .choicebutton button {
   display: inline-block;
   background: #0acc03;
@@ -1707,6 +1717,11 @@ section {
 
 .choicebutton a:hover {
   background: #4fe215;
+}
+
+.choicebutton c:hover {
+  background: #f3da4b;
+  cursor: pointer;
 }
 .choicebutton button:hover {
   background: #4fe215;
