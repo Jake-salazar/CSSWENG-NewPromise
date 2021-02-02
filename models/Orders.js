@@ -53,8 +53,8 @@ exports.createOrder = function(obj, next) {
   };
 
   
-  exports.getInfo = function(lastName, firstName, emailAddress,facebookName,address,status,delivery_date,next) {
-    Products.find({ $or: [ lastName, firstName, emailAddress,facebookName,address,status,delivery_date,]}, function(err, posts) {
+  exports.getInfo = function(lastName, firstName, emailAddress,facebookName,address,status,next) {
+    Orders.find({ $or: [ lastName, firstName, emailAddress,facebookName,address,status,]}, function(err, posts) {
       next(err, posts);
       console.log(err);
     });

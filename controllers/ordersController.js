@@ -111,7 +111,7 @@ exports.getAllOrders = (param, callback) =>{
     var query = req.body.searchTitle;
     
     ordersModel.getInfo({ lastName: {$regex: query, $options:'i'}}, { firstName: {$regex: query, $options:'i'}},{ emailAddress: {$regex: query, $options:'i'}},{ facebookName: {$regex: query, $options:'i'}},
-    { address: {$regex: query, $options:'i'}}, { status: {$regex: query, $options:'i'}},{ delivery_date: {$regex: query, $options:'i'}}, (err, result) => {
+    { address: {$regex: query, $options:'i'}}, { status: {$regex: query, $options:'i'}}, (err, result) => {
       if (err) {
         req.flash('error_msg', 'Something happened! Please try again.');
         throw err; 
