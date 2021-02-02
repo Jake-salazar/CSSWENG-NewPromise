@@ -1,12 +1,5 @@
 const mongoose = require('./Connection');
 console.log("here are orders schema")
-/* 
-const cartSchema = mongoose.Schema({
-    items: {type:Object},
-    totalQty: {type:Number,require:true},
-    totalPrice: {type:Number,require:true}
-});
- */
 
 const orderschema = mongoose.Schema({
     cart: {type:Object, required:true},
@@ -18,7 +11,7 @@ const orderschema = mongoose.Schema({
     contactNumber: {type: Number, required: true},
     address: {type:String, required: true},  
     status: {type:String,required:true}, 
-    delivery_date: {type:String,require:false},
+    delivery_date: {type:Date,require:false},
 },{
     timestamps: true
 }
