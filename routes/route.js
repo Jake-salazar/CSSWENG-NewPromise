@@ -196,11 +196,12 @@ router.post('/products/delete/:id',productsController.delete); // FIXING
 //     console.log(req.body);
 // });
 router.get('/post/view/:id', (req, res) => {
-    console.log("Read view successful!");
-  
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
     productsController.getID(req, (post) => {
         res.render('products-details', { 
-          item: post 
+          item: post,
+          products: cart.generateArray(),totalPrice: cart.totalPrice 
         });
       });
 });
