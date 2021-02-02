@@ -141,7 +141,7 @@ router.get('/orderdetails/:id',(req,res)=>{
 });
 
 router.get('/order/delete/:id', ordersController.delete);
-
+router.get('/order/delete-adminorders/:id', ordersController.deleteAdminOrder);
 
 
 router.get('/cart',(req,res)=>{

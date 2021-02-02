@@ -68,6 +68,19 @@ exports.getAllOrders = (param, callback) =>{
     }); 
   };
 
+  exports.deleteAdminOrder = (req, res) => {
+    var id = req.params.id;
+    
+    ordersModel.remove(id, (err, result) => {
+      if (err) {
+        throw err; 
+      } 
+      else {
+        res.redirect('/adminorders');
+      }
+    }); 
+  };
+
   exports.edit = (req, res) => {
   
     var update = {
