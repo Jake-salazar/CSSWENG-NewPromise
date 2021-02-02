@@ -1,6 +1,7 @@
 const express = require('express');
 const productsController = require('../controllers/productsController'); //connection to the controllers and database
 const ordersController = require('../controllers/ordersController'); // connection to order controller
+const reviewsController = require('../controllers/reviewsController');
 const router = express.Router();
 var Cart = require('../models/Cart');
 
@@ -45,9 +46,10 @@ router.get('/Checkout',(req,res)=>{
 });
 
 router.get('/feedback',(req,res)=>{
-    // create the res.render here
     res.render('feedback');
 });
+
+router.post('/post/feedback/', reviewsController.creatingReview);
 
 router.get('/ProductsPage',(req,res)=>{
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
