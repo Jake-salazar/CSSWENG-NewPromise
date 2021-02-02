@@ -67,3 +67,26 @@ exports.getAllOrders = (param, callback) =>{
       }
     }); 
   };
+
+  exports.edit = (req, res) => {
+  
+    var update = {
+      $set: { 
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        middleInitial: req.body.middleInitial,
+        facebookName: req.body.facebookName,
+        contactNumber: req.body.contactNumber,
+        address: req.body.address,
+        status: req.body.status
+      } 
+    };
+   
+    ordersModel.update(req.body._id, update, (err, result) => {
+      if (err) {
+        res.redirect('/admin');
+      } else {
+        res.redirect('/admin');
+      }
+    });
+  };

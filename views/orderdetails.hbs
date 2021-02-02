@@ -3,6 +3,7 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
+   
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
@@ -18,18 +19,26 @@
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
+    <form id="fcf-form-id" class="fcf-form-class" action="/Edit/Status" method="POST" >
       <div class="container">
+         <input name="firstName" type="hidden" value="{{orderItem.firstName}}">
+         <input name="lastName" type="hidden" value="{{orderItem.lastName}}">
+         <input name="middleInitial" type="hidden" value="{{orderItem.middleInitial}}">
+         <input name="facebookName" type="hidden" value="{{orderItem.facebookName}}">
+         <input name="contactNumber" type="hidden" value="{{orderItem.contactNumber}}">
+         <input name="address" type="hidden" value="{{orderItem.address}}">
+         <input name="_id" type="hidden" value="{{orderItem._id}}">
 
         <h3>Name: {{orderItem.lastName}},{{orderItem.firstName}},{{orderItem.middleInitial}}</h3>
         <h3>Address: {{orderItem.address}}</h3>
         <h3>Email: {{orderItem.emailAddress}}</h3>
         <h3>Contact: {{orderItem.contactNumber}}</h3>
         <h4>Date: {{orderItem.createdAt}}</h4>
-        <h4>Status: <input type="text" value="{{orderItem.status}}"> </h4>
+        <h4>Status: <input type="text" name ="status" value="{{orderItem.status}}"> </h4>
         <br>
         <div class="choicebutton">
-            <a href="">Change Status</a>
-            <b class="btn">Delete</b>
+            <button type="submit">Change Status</button>
+            <a href ="/order/delete/{{orderItem._id}}">Delete</b>
         </div>
         <br>
 
@@ -65,6 +74,7 @@
         </div>
 
       </div>
+      </form>
     </section><!-- End Portfolio Section -->
 
   </main><!-- End #main -->

@@ -50,3 +50,10 @@ exports.createOrder = function(obj, next) {
       next(err, post);
     });
   };
+
+
+  exports.update = function(id, update, next) {
+    Orders.findOneAndUpdate({_id: id}, update, { new: true }, function(err, post) {
+      next(err, post);
+    })
+  };

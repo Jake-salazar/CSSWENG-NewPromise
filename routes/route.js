@@ -279,4 +279,7 @@ router.post("/Checkout/placeOrder", ordersController.creatingOrder, (req,res)=>{
       });
 });
 
+
+router.post('/Edit/Status', ordersController.edit);
+
 module.exports = router;
