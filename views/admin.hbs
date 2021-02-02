@@ -69,18 +69,12 @@
       <div class="container">
           <h1>Recent Reviews</h1>
         <div class="row">
-            {{#each publicReview}}
-          <div class="col-lg-6" data-aos="fade-up">
-            <div class="testimonial-item">
-              <h3>{{fullName}}</h3>
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                {{review}}
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-            </div>
-          </div>
-            {{/each }}
+           {{#if publicReview}} 
+            {{>dashboard_review}}
+              {{else}}
+            <h2>No Public Reviews! </h2>
+              {{/if}}
+          
 
         </div>
 

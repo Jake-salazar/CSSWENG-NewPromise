@@ -93,8 +93,9 @@ router.get('/ProductsPage',(req,res)=>{
 router.get('/admin',loggedIn,(req,res)=>{
 
     reviewsController.searchVisible(req, (reviews) => {
-        console.log("reviews")
-        console.log(reviews);
+        if(reviews.length == 0){
+            reviews = null
+        }
         ordersController.getAllOrders(req,(orders)=>{
             if(orders.length == 0){
                 orders = null
