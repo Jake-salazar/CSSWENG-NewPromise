@@ -96,14 +96,20 @@ router.get('/admin',(req,res)=>{
 });
 
 
-router.get('/adminreviews',(req,res)=>{
+router.get('/adminreviews-public',(req,res)=>{
     reviewsController.search(req, (reviews) => {
-        res.render('adminreviews',{
+        res.render('adminreviews-public',{
             item:reviews
         });
       });
 });
-
+router.get('/adminreviews-pending',(req,res)=>{
+    reviewsController.search(req, (reviews) => {
+        res.render('adminreviews-pending',{
+            item:reviews
+        });
+      });
+});
 router.get('/setVisible/:id',reviewsController.setVisible,(req,res)=>{
 });
 

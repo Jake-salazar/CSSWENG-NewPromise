@@ -6,10 +6,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Reviews</h2>
+          <h2>Pending Reviews</h2>
           <ol>
             <li><a href="admin">Dashboard</a></li>
-            <li>Reviews</li>
+            <li>Pending Reviews</li>
           </ol>
         </div>
 
@@ -19,8 +19,10 @@
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
       <div class="container">
-
+      <h4>Pending Reviews</h4>
+      <br>
         <div class="row">
+         
         {{#each item}}
           <div class="col-lg-6" data-aos="fade-up">
             <div class="testimonial-item">
@@ -34,15 +36,12 @@
               </p>
               <div class="choicebutton">
                 <a href="/setVisible/{{this._id}}">Show</a>
-                <c href="/setHide/{{this._id}}">Hide</c>
-                <a href="/delete/review/{{this._id}}" >Delete</a>
+                <a class="btndelete" href="/delete/review/{{this._id}}" >Delete</a>
               </div>
             </div>
           </div>
           {{/each}}
-
         </div>
-
       </div>
     </section><!-- End Testimonials Section -->
 
