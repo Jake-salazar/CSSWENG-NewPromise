@@ -35,10 +35,11 @@
         <h3>Contact: {{orderItem.contactNumber}}</h3>
         <h4>Date: {{orderItem.createdAt}}</h4>
         <h4>Status: <input type="text" name ="status" value="{{orderItem.status}}"> </h4>
+        <h4>Devlivery Date: <input type="text" name ="status" value=""></h4>
         <br>
         <div class="choicebutton">
             <button type="submit">Change Status</button>
-            <a href ="/order/delete/{{orderItem._id}}">Delete</b>
+            <b href ="/order/delete/{{orderItem._id}}">Delete</b>
         </div>
         <br>
 
