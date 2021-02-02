@@ -17,7 +17,8 @@ const orderschema = mongoose.Schema({
     facebookName: { type: String, required: true},
     contactNumber: {type: Number, required: true},
     address: {type:String, required: true},  
-    status: {type:String,required:true}
+    status: {type:String,required:true}, 
+    delivery_date: {type:String,require:false},
 },{
     timestamps: true
 }

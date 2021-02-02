@@ -2,6 +2,8 @@ const ordersModel = require('../models/Orders');
 var Cart = require('../models/Cart');
 
 exports.creatingOrder = function(req, res,next) {  
+  var myDate = new Date(new Date().getTime()+(5*24*60*60*1000));
+
   var order = {
         cart: req.session.cart,
         firstName: req.body.firstname,
@@ -12,6 +14,7 @@ exports.creatingOrder = function(req, res,next) {
         contactNumber: req.body.contact,
         address: req.body.address,
         status: "Pending",
+        delivery_date: myDate
       };
 
       ordersModel.createOrder(order, function(err, product){
@@ -82,7 +85,6 @@ exports.getAllOrders = (param, callback) =>{
   };
 
   exports.edit = (req, res) => {
-  
     var update = {
       $set: { 
         firstName: req.body.firstName,
@@ -91,15 +93,15 @@ exports.getAllOrders = (param, callback) =>{
         facebookName: req.body.facebookName,
         contactNumber: req.body.contactNumber,
         address: req.body.address,
-        status: req.body.status
+        status: req.body.status,
+        delivery_date: req.body.delivery_date
       } 
     };
-   
     ordersModel.update(req.body._id, update, (err, result) => {
       if (err) {
-        res.redirect('/admin');
+        res.redirect('/adminorders');
       } else {
-        res.redirect('/admin');
+        res.redirect('/adminorders');
       }
     });
   };
