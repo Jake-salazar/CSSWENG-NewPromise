@@ -36,6 +36,7 @@ router.get('/AboutUs',(req,res)=>{
 });
 
 router.get('/Checkout',(req,res)=>{
+    console.log("here at checkout!")
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
     req.session.cart =cart;
     res.render('checkout',{ 
@@ -229,5 +230,14 @@ router.post('/post/edit',upload, productsController.edit);
 
 
 
+/* router.get('/Checkout/Items',(req,res)=>{
+    console.log("checkout page")
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
+    res.render('checkout',{ 
+        products: cart.generateArray(),totalPrice: cart.totalPrice
+      });
+});
+ */
 
 module.exports = router;

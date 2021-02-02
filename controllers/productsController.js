@@ -21,12 +21,12 @@ exports.create = function(req, res) {
             console.log(err.errors);
       
             result = { success: false, message: "Product was not created!" }
-            res.send(result);
+            res.redirect("/admin");
           } else {
             console.log("Successfully added product!");      
             result = { success: true, message: "product created!" }
       
-            res.send(result);
+            res.redirect("/admin");
           }
 
   });

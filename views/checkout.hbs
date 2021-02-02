@@ -82,39 +82,30 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="d-flex">
-                <td style="width:10%">10</td>
+            {{#if products}} 
+             {{#each products }}
+           <tr class="d-flex">
+                <td style="width:10%">{{this.qty}}</td>
                 <td style="width:10%">PCS</td>
-                <td style="width:60%">Boysen Paint</td>
-                <td style="width:10%">150.00</td>
-                <td style="width:10%">1500.00</td>
+                <td style="width:60%">{{this.item.productName}}</td>
+                <td style="width:10%"> {{this.item.productPrice}} </td>
+                <td style="width:10%"> {{this.price}} </td>
             </tr>
+             {{/each }}
+              {{else}}
             <tr class="d-flex">
-                <td style="width:10%">10</td>
-                <td style="width:10%">PCS</td>
-                <td style="width:60%">Boysen Paint</td>
-                <td style="width:10%">150.00</td>
-                <td style="width:10%">1500.00</td>
+                <td style="width:10%"> </td>
+                <td style="width:10%"> </td>
+                <td style="width:60%">No Products!</td>
+                <td style="width:10%">  </td>
+                <td style="width:10%"> </td>
             </tr>
-            <tr class="d-flex">
-                <td style="width:10%">10</td>
-                <td style="width:10%">PCS</td>
-                <td style="width:60%">Boysen Paint</td>
-                <td style="width:10%">150.00</td>
-                <td style="width:10%">1500.00</td>
-            </tr>
-            <tr class="d-flex">
-                <td style="width:10%">10</td>
-                <td style="width:10%">PCS</td>
-                <td style="width:60%">Boysen Paint</td>
-                <td style="width:10%">150.00</td>
-                <td style="width:10%">1500.00</td>
-            </tr>  
+             {{/if}}
         </tbody>
     </table>
         <hr>
         <div class="fcf-form-group">
-            <h4 style="float: right;">Total: ₱ 500.00</h4>
+            <h4 style="float: right;">Total: ₱ {{this.totalPrice}}</h4>
         </div>
       
         <br><br>
