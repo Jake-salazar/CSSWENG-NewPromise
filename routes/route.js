@@ -96,7 +96,7 @@ router.get('/AboutUs',(req,res)=>{
 router.get('/FAQ',(req,res)=>{
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
     req.session.cart =cart;
-    res.render('FAQ',{ 
+    res.render('faq',{ 
         products: cart.generateArray(),totalPrice: cart.totalPrice
       });
 });
