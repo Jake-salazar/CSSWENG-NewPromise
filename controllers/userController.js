@@ -9,7 +9,7 @@ exports.loginUser = (req, res) => {
       userModel.getOne({ username: username }, (err, user) => {
         if (err) {
           // Database error occurred...
-          req.flash('error_msg', 'Something happened! Please try again.');
+          req.flash('error_msg', 'Invalid Credentials');
           res.redirect('/login');
         } else {
           // Successful query
@@ -23,12 +23,12 @@ exports.loginUser = (req, res) => {
                 console.log(req.session);
                 res.redirect('/admin');
               } else {  // If passwords don't match
-                req.flash('error_msg', 'Password does not match. Please try again.');
+                req.flash('error_msg', 'Invalid Credentials');
                 res.redirect('/login');
               }
             });
           } else {  // No user found
-            req.flash('error_msg', 'No registered user with that username. Please register.');
+            req.flash('error_msg', 'Invalid Credentials');
             res.redirect('/login');
           }
         }
