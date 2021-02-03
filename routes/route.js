@@ -132,6 +132,10 @@ router.get('/feedback',(req,res)=>{
     res.render('feedback');
 });
 
+router.get('/adminaccount',(req,res)=>{
+    res.render('adminaccount');
+});
+
 /** POST FUNCTIONALITIES WITHIN THE PUBLIC */
 /** POST A FEED BACK */
 router.post('/post/feedback/', reviewsController.creatingReview, (req,res)=>{
