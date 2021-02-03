@@ -3,7 +3,7 @@ var Cart = require('../models/Cart');
 
 exports.creatingOrder = function(req, res,next) {  
   var myDate = new Date(new Date().getTime()+(5*24*60*60*1000));
-
+  
   var order = {
         cart: req.session.cart,
         firstName: req.body.firstname,
@@ -16,20 +16,23 @@ exports.creatingOrder = function(req, res,next) {
         status: "Pending",
         delivery_date: myDate
       };
-
-      ordersModel.createOrder(order, function(err, product){
-        res.locals.order = order;
-        var result;
-            if (err) {
-              console.log(err.errors);
-              result = { success: false, message: "Order was not created!" }
-              res.redirect("/");
-            } else {
-              console.log("Successfully added product!");      
-              result = { success: true, message: "Order created!"  }
-              next();
-            }
-    });
+      if (req.session.cart.totalQty == 0){
+        res.redirect("/");
+      }else{
+        ordersModel.createOrder(order, function(err, product){
+          res.locals.order = order;
+          var result;
+              if (err) {
+                console.log(err.errors);
+                result = { success: false, message: "Order was not created!" }
+               
+              } else {
+                console.log("Successfully added product!");      
+                result = { success: true, message: "Order created!"  }
+                next();
+              }
+      });
+      }
 };
 
 exports.getAllOrders = (param, callback) =>{

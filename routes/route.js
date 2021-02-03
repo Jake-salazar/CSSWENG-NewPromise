@@ -161,9 +161,12 @@ router.get('/addtocart',(req,res)=>{
 
 /**CHECK THE DETAILS OF THE ITEM */
 router.get('/item-details/:id',(req,res)=>{
+    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+    req.session.cart =cart;
     productsController.getID(req, (post) => {
         res.render('item-details', { 
-          item: post 
+          item: post,
+          products: cart.generateArray(),totalPrice: cart.totalPrice
         });
       });
 });
