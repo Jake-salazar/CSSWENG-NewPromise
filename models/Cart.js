@@ -19,11 +19,15 @@ module.exports = function Cart(oldCart){
         if (!storedItem){
             storedItem = this.items[id] = {item:item, qty:0, price:0}
         }
-        
-        this.totalPrice -= storedItem.price;
-        storedItem.qty = parseFloat(Quantity);
-        storedItem.price = storedItem.item.productPrice * storedItem.qty;
-        this.totalPrice += parseFloat(storedItem.item.productPrice)*storedItem.qty;
+        if(Quantity <=0 ){
+            this.remove(id)
+        }
+        else{
+            this.totalPrice -= storedItem.price;
+            storedItem.qty = parseFloat(Quantity);
+            storedItem.price = storedItem.item.productPrice * storedItem.qty;
+            this.totalPrice += parseFloat(storedItem.item.productPrice)*storedItem.qty;
+        }
     }
 
     this.remove = function (id){
