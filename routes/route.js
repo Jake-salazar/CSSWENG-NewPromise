@@ -117,8 +117,13 @@ router.get('/Reviews',(req,res)=>{
 router.get('/Checkout',(req,res)=>{
     var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
     req.session.cart =cart;
+    var empty = null;
+    if (req.session.cart.totalQty == 0){
+         empty = true;
+    }
     res.render('checkout',{ 
-        products: cart.generateArray(),totalPrice: cart.totalPrice
+        products: cart.generateArray(),totalPrice: cart.totalPrice,
+        isEmpty: empty
       });
 });
 

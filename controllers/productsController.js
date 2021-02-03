@@ -104,7 +104,7 @@ exports.addingItem = (req,res,next) =>{
         posts.forEach(function(doc) {
           postObjects.push(doc.toObject());
         });
-        res.render('home',{ 
+        res.render('products',{ 
           item: postObjects,
           products: cart.generateArray(),totalPrice: cart.totalPrice
         });
