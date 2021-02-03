@@ -37,7 +37,7 @@
                   <li><strong>Price</strong>: ₱ {{item.productPrice}}</li> 
                   <form action="/cart/added" method="POST" >
                      <input name="id" type="hidden" value="{{item._id}}">
-                    <li><strong>Quantity</strong>: <input name ="Quantity"  type="number" value=""></li>
+                    <li><strong>Quantity</strong>: <input name ="Quantity"  type="number" value="" required></li>
                     <li><button class="btn-get-started" type="submit"> Add to Cart</button></li>
                   </form>
                 </ul>
