@@ -63,7 +63,6 @@ app.use("/", appRoute);
 
 //************  Server online *************/
 //TODO: Move to .env file after development
-
 const LOCAL_ADDRESS = '0.0.0.0'
 app.listen(process.env.PORT, LOCAL_ADDRESS, ()=>{
     console.log(`Server ready | Listening at ${LOCAL_ADDRESS}:${process.env.PORT}`)
