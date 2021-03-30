@@ -1,8 +1,7 @@
 // TODO connection with the database
 
 const mongoose = require('mongoose');
-
-const databaseURL = 'mongodb://localhost:27017/Productsdb';
+const { dbURL } = require('../config');
 
 
 const options = {
@@ -11,5 +10,5 @@ const options = {
   useFindAndModify: false 
 };
 
-mongoose.connect(databaseURL, options, () => console.log('connected to the database'));
+mongoose.connect( dbURL , options, () => console.log('connected to the database'));
 module.exports = mongoose;
