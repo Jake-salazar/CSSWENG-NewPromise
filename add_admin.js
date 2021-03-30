@@ -8,7 +8,7 @@ function addAdminUser(){
     const user = {
       email: "new_promise@gmail.com",
       username: "admin_newpromise",
-      password: "admin1234"
+      password: "cssweng4.0"
     };
     bcrypt.hash(user.password, saltRounds, (err, hashed) => {
       user.password = hashed;

@@ -16,6 +16,9 @@ const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-acce
 
 // App initialization
 const app = express()
+
+const { envPort, sessionKey } = require('./config');
+
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
     extname: '.hbs',
@@ -30,7 +33,7 @@ app.set('view engine', 'hbs')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
-    secret: 'supersecret',
+    secret: sessionKey,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     resave: false,
     saveUninitialized: true,
@@ -60,7 +63,7 @@ app.use("/", appRoute);
 
 //************  Server online *************/
 //TODO: Move to .env file after development
-const PORT = 3000
+const PORT = envPort || 9090
 const LOCAL_ADDRESS = 'localhost'
 app.listen(PORT, LOCAL_ADDRESS, ()=>{
     console.log(`Server ready | Listening at ${LOCAL_ADDRESS}:${PORT}`)
