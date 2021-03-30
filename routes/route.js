@@ -5,12 +5,10 @@ const reviewsController = require('../controllers/reviewsController');
 const userController = require('../controllers/userController');
 const loginValidation = require('../validators.js');
 const { loggedIn, loggedOut,loginAdmin } = require('../middlewares/checkAuth');
+const nodemailer = require('nodemailer')
+require('dotenv').config();
 const router = express.Router();
 var Cart = require('../models/Cart');
-
-
-
-
 
 // HOMEPAGE - GET REQUEST
 router.get('/',(req,res)=>{
@@ -136,6 +134,9 @@ router.get('/adminaccount',(req,res)=>{
     res.render('adminaccount');
 });
 
+router.post('/editAdmin', userController.edit, (req,res)=>{
+});
+
 /** POST FUNCTIONALITIES WITHIN THE PUBLIC */
 /** POST A FEED BACK */
 router.post('/post/feedback/', reviewsController.creatingReview, (req,res)=>{
@@ -238,17 +239,160 @@ router.post('/cart/added', productsController.addingItem);
 
 //** CHECKOUT AN ITEM TO THE CART */
 router.post("/Checkout/placeOrder", ordersController.creatingOrder, (req,res)=>{
-    var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
-    req.session.cart =cart;
-    req.session.cart = null;
-    var today = new Date();
-    var order = res.locals.order 
-    res.render('receipt',{ 
-        products: cart.generateArray(),totalPrice: cart.totalPrice,
-        orderDetails: order,
-        date: today
-      });
+   // get the email of the admin 
+    userController.getOneUser(req, (result)=>{
+        var cart = new Cart(req.session.cart ? req.session.cart: {items:{}});
+        req.session.cart =cart;
+        req.session.cart = null;
+        var today = new Date();
+        var order = res.locals.order 
+   
+    
+        let products = cart.generateArray()
+    
+        let productArr = []
+        let sum = 0;
+        let temp;
+        for(let i = 0; i < products.length; i++){
+            temp = {
+                qty: products[i].qty,
+                productName: products[i].item.productName,
+                unitPrice: products[i].item.productPrice,
+                totalPrice: products[i].price
+            }
+            sum += products[i].price
+            productArr.push(temp)
+        }
+    
+       let ADMIN = `
+    <html>
+    <head>
+        <style>
+    
+        </style>
+    </head>
+    <body>
+    <p> Hello You Have A New Order Request! </p>
+    <table>
+        <tr>
+            <td style="width:35%;font-size:16px; text-align:center"><b> Name: </b></td>
+            <td style="width:65%;font-size:16px; text-align:left"> ${req.body.firstname} ${req.body.lastname} </td>
+        </tr>
+        <tr>
+            <td style="width:35%;font-size:16px; text-align:center"><b> Address: </b></td>
+            <td style="width:65%;font-size:16px; text-align:left"> ${req.body.address} </td>
+        </tr>
+        <tr>
+            <td style="width:35%;font-size:16px; text-align:center"><b> Contact: </b></td>
+            <td style="width:65%;font-size:16px; text-align:left"> ${req.body.contact} </td>
+        </tr>
+        <tr>
+            <td style="width:35%;font-size:16px; text-align:center"><b> Email: </b></td>
+            <td style="width:65%;font-size:16px; text-align:left"> ${req.body.Email} </td>
+        </tr>
+        <tr>
+            <td style="width:35%;font-size:16px; text-align:center"><b> Facebook: </b></td>
+            <td style="width:65%;font-size:16px; text-align:left"> ${req.body.facebook} </td>
+        </tr>
+    </table>`
+    
+    let CUSTOMER = 
+    `
+    <html>
+    <head>
+        <style>
+    
+        </style>
+    </head>
+    <body>
+    <p> Hello, ${req.body.firstname}! Your order receipt is attached below: <p><br> `
+    
+    
+    let x =  `<table id="productSizes" class="table">
+        <thead>
+            <tr class="d-flex">
+    <th style="width:20%; font-size:20px">Quantity</th>
+    <th style="width:40%; font-size:20px">Item Name</th>
+    <th style="width:20%; font-size:20px">Price</th>
+    <th style="width:20%; font-size:20px">Total Price</th>
+    </tr>
+    </thead>
+    <tbody> 
+        `;
+    for (let i = 0; i < productArr.length; i++){
+        x = x + '<tr class="d-flex" >'
+        x = x + '<td style="width:20%;text-align: center; font-size:16px">'  + productArr[i].qty  + ' PCS. </td>'
+        x = x + '<td style="width:40%;text-align: center; font-size:16px">' + productArr[i].productName + '</td>'
+        x = x + '<td style="width:20%;text-align: center; font-size:16px">' + productArr[i].unitPrice + '</td>'
+        x = x + '<td style="width:20%;text-align: center; font-size:16px">' + productArr[i].totalPrice + '</td></tr>'
+    }
+    x = x + `
+    <td colspan="4" style="width:100%;text-align: right; font-size:16px"><b>Total:</b> <span> ₱ ` + sum + `</span> 
+    </tbody>
+    </table>
+    </body>
+    </html>
+    `
+    ADMIN = ADMIN + x;
+    CUSTOMER = CUSTOMER +x;
+    
+    
+    
+    
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+              auth: {
+              user: 'newpromiseplaceholder@gmail.com',
+              pass: 'cssweng4.0'  // generated ethereal password
+          }
+        });
+        
+        //SEND TO ADMIN
+        let mailOptions = {
+            from: '"New Promise: Autoforwarder <newpromiseplaceholder@gmail.com>', // sender address
+            to: result, // list of receivers
+            subject: 'NEW PROMISE: CUSTOMER ORDER',
+            html: ADMIN // html body
+        };
+        
+        // send to admin
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+        });
+        
+        // redefine for client
+        mailOptions = {
+            from: '"New Promise: Autoforwarder <newpromiseplaceholder@gmail.com>', // sender address
+            to: req.body.Email, // list of receivers
+            subject: 'NEW PROMISE: CUSTOMER ORDER',
+            html: CUSTOMER // html body
+        };
+        
+        // send mail to customer then render
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return console.log(error);
+            }
+            res.render('receipt',{ 
+                products: cart.generateArray(),totalPrice: cart.totalPrice,
+                orderDetails: order,
+                date: today
+              });
+        });
+    
+
+
+         
+    });
+   
+  
+
+
 });
+
+
 
 
 /** FUNCTION FOR UPLOADING IMAGES */

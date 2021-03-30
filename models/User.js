@@ -21,3 +21,10 @@ exports.create = function(obj, next) {
       next(err, user);
     });
   };
+
+
+  exports.update = function(id, update, next) {
+    User.findOneAndUpdate({_id: id}, update, { new: true }, function(err, post) {
+      next(err, post);
+    })
+  };

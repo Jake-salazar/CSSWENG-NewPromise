@@ -19,6 +19,7 @@ exports.loginUser = (req, res) => {
               if (result) {
                 // Update session object once matched!
                 req.session.user = user._id;
+                req.session.email = user.email;
                 req.session.username = user.username;
                 console.log(req.session);
                 res.redirect('/admin');
@@ -48,3 +49,39 @@ exports.loginUser = (req, res) => {
       });
     }
   };
+
+
+  exports.edit = (req, res) => {
+    const saltRounds = 10;
+    bcrypt.hash( req.body.npassword, saltRounds, (err, hashed) => {
+      var hashedpassword = hashed;
+
+      var update = {
+        $set: { 
+          email: req.body.email,
+          username: req.body.username,
+          password: hashedpassword
+        } 
+      };
+      console.log(update);
+      userModel.update(req.session.user, update, (err, result) => {
+        if (err) {
+          throw err;
+        } else {
+          res.redirect('/admin');
+        }
+      });
+    });
+  
+  };
+
+  exports.getOneUser = (req,callback)=>{
+    userModel.getOne({ username: "admin_newpromise" }, (err, user) => {
+      console.log("assda")
+      console.log(user);
+      console.log('zzasds');
+      console.log(user.email);
+     callback(user.email);
+    });
+  }
+      
