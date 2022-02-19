@@ -17,7 +17,7 @@ const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-acce
 // App initialization
 const app = express()
 
-const { sessionKey } = require('./config');
+const  sessionKey  = "secretkey"
 
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
@@ -63,9 +63,9 @@ app.use("/", appRoute);
 
 //************  Server online *************/
 //TODO: Move to .env file after development
-const LOCAL_ADDRESS = '0.0.0.0'
+const LOCAL_ADDRESS = 'localhost'
 app.listen(process.env.PORT, LOCAL_ADDRESS, ()=>{
-    console.log(`Server ready | Listening at ${LOCAL_ADDRESS}:${process.env.PORT}`)
+    console.log(`Server ready | Listening at ${LOCAL_ADDRESS}:3000`)
 })
 
 /*app.listen(process.env.PORT, process.env.LOCAL_ADDRESS, ()=>{
